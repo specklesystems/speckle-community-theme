@@ -1,0 +1,478 @@
+// ---------------------------------------------------------------------------
+// Admin — same language as the rest of the theme. Every admin page renders
+// inside .boxed.white.admin-content, which core paints as an unpadded white
+// slab; here it becomes a surface-2 card on the surface-0 page, and the
+// pieces inside it (page header, filters, settings rows, tabs, tables,
+// dashboard sections) get the frontend-3 treatment.
+// ---------------------------------------------------------------------------
+
+.admin-area,
+.admin-interface {
+  // The container card
+  .boxed.white.admin-content {
+    background: var(--sp-surface-2);
+    border-radius: var(--sp-radius-lg);
+    box-shadow: var(--sp-shadow-xs), 0 0 0 1px var(--sp-border);
+    padding: 24px;
+    box-sizing: border-box;
+  }
+
+  .admin-contents {
+    padding-bottom: 0;
+  }
+
+  // --- Page header (breadcrumb, title, description, actions) ---------------
+
+  .d-page-header {
+    margin-bottom: 20px;
+
+    .d-breadcrumbs,
+    .d-breadcrumbs__item,
+    .d-breadcrumbs a {
+      font-size: 12px;
+      color: var(--sp-text-muted);
+    }
+    .d-page-header__title,
+    h1 {
+      font-size: 24px;
+      font-weight: 600;
+      letter-spacing: -0.015em;
+      color: var(--sp-text-highlighted);
+      margin: 4px 0 4px;
+    }
+    .d-page-header__description,
+    .d-page-subheader__description,
+    p {
+      font-size: 13px;
+      color: var(--sp-text-muted);
+    }
+    .d-page-header__actions,
+    .d-page-subheader__actions {
+      gap: 8px;
+    }
+  }
+
+  .d-page-subheader {
+    .d-page-subheader__title,
+    h2 {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--sp-text-highlighted);
+    }
+  }
+
+  // Legacy section titles (dashboard, older pages)
+  .section-title,
+  .admin-contents > h2,
+  .admin-contents > h3 {
+    border-bottom: 1px solid var(--sp-border);
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+
+    h2 {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--sp-text-highlighted);
+      letter-spacing: -0.005em;
+    }
+  }
+
+  // --- Tabs inside admin (dashboard, users, etc.) ----------------------------
+
+  .admin-contents .nav-pills,
+  .d-nav-submenu__tabs {
+    width: fit-content;
+    max-width: 100%;
+    border-bottom: 0;
+    margin-bottom: 16px;
+  }
+  .horizontal-overflow-nav {
+    border-bottom: 0;
+    background: transparent;
+    &::before,
+    &::after {
+      display: none;
+    }
+    .horizontal-overflow-nav__scroll-left {
+      background: linear-gradient(to right, var(--sp-surface-2) 60%, transparent);
+    }
+    .horizontal-overflow-nav__scroll-right {
+      background: linear-gradient(to left, var(--sp-surface-2) 60%, transparent);
+    }
+  }
+
+  // --- Filter / control bar ----------------------------------------------------
+
+  .admin-controls,
+  .admin-contents .admin-controls,
+  .admin-contents .admin-controls .controls,
+  .admin-contents .admin-controls .search {
+    background: transparent;
+    padding: 0;
+    margin-bottom: 16px;
+    gap: 8px;
+    align-items: center;
+
+    .controls,
+    .search {
+      gap: 8px;
+      align-items: center;
+    }
+    input[type="text"],
+    input[type="search"] {
+      min-width: 240px;
+    }
+    label {
+      font-weight: 400;
+      color: var(--sp-text-toned);
+    }
+  }
+
+  // Newer filter bars (users list, etc.) — core gives them a grey band
+  .d-admin-filter {
+    background: transparent;
+    padding: 0;
+    margin-bottom: 16px;
+    gap: 8px;
+    .admin-filter__input {
+      min-width: 280px;
+    }
+  }
+
+  // --- Settings ---------------------------------------------------------------
+
+  // Category list beside settings (USidebar-style vertical nav)
+  // Core floats .admin-nav (~18%) beside .admin-detail (~76%), so spacing
+  // must stay inside those widths (border-box, no extra margin) or the
+  // settings column wraps below the list and disappears off-screen.
+  .admin-nav {
+    background: transparent;
+    border-right: 1px solid var(--sp-border);
+    padding-right: 12px;
+    margin-right: 0;
+    box-sizing: border-box;
+
+    .nav-stacked {
+      border: 0;
+      background: transparent;
+      margin: 0;
+    }
+    li {
+      border: 0;
+      background: transparent;
+      margin-bottom: 1px;
+
+      a {
+        display: block;
+        font-size: 13px;
+        font-weight: 500;
+        color: var(--sp-text-toned);
+        padding: 6px 10px;
+        border-radius: var(--sp-radius-md);
+        background: transparent;
+        transition: background-color 150ms, color 150ms;
+        &:hover {
+          background: var(--sp-row-hover);
+          color: var(--sp-text-highlighted);
+        }
+        &::after {
+          display: none;
+        }
+      }
+      &.active a,
+      a.active {
+        background: var(--sp-bg-elevated);
+        color: var(--sp-text-highlighted);
+      }
+    }
+  }
+
+  .admin-detail {
+    background: transparent;
+    border: 0;
+    box-sizing: border-box;
+  }
+  .admin-nav + .admin-detail {
+    padding-left: 24px;
+  }
+
+  .row.setting,
+  .admin-detail .setting {
+    border-bottom: 1px solid var(--sp-border);
+    padding: 16px 0;
+    margin: 0;
+
+    &:last-child {
+      border-bottom: 0;
+    }
+
+    .setting-label {
+      h3 {
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--sp-text-highlighted);
+        text-transform: none;
+        letter-spacing: 0;
+      }
+    }
+    .setting-value {
+      .desc {
+        font-size: 12px;
+        line-height: 1.5;
+        color: var(--sp-text-muted);
+        margin-top: 6px;
+      }
+    }
+    .setting-controls {
+      gap: 6px;
+    }
+  }
+
+  // Overridden settings: core paints the whole field in the highlight colour.
+  // Keep fields neutral; the label carries a primary dot instead.
+  .row.setting.overridden {
+    .setting-value {
+      input,
+      textarea,
+      .select-kit-header,
+      .value-list .value input {
+        background: var(--sp-bg);
+      }
+    }
+    .setting-label h3 {
+      color: var(--sp-text-highlighted);
+    }
+    .setting-label h3::before,
+    .setting-label .overridden-indicator,
+    > .setting-label::before {
+      color: var(--sp-primary);
+      background-color: var(--sp-primary);
+    }
+  }
+
+  // Unsaved setting changes bar
+  .setting-controls,
+  .admin-detail .setting .setting-controls {
+    .ok {
+      background: var(--sp-primary);
+      color: var(--sp-text-inverted);
+    }
+  }
+
+  // --- Tables -------------------------------------------------------------------
+
+  .admin-contents table,
+  .d-admin-table {
+    border-collapse: separate;
+    border-spacing: 0;
+    width: 100%;
+    font-size: 13px;
+
+    th,
+    thead td {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--sp-text-muted);
+      text-transform: none;
+      letter-spacing: 0;
+      background: var(--sp-surface-1);
+      border-bottom: 1px solid var(--sp-border);
+      padding: 10px 12px;
+      text-align: left;
+    }
+    td {
+      border-bottom: 1px solid var(--sp-border);
+      border-top: 0;
+      padding: 10px 12px;
+      color: var(--sp-text);
+      vertical-align: middle;
+    }
+    tbody tr:last-child td {
+      border-bottom: 0;
+    }
+    tbody tr {
+      transition: background-color 150ms;
+      &:hover {
+        background: var(--sp-row-hover);
+      }
+    }
+  }
+
+  // Tables wrapped as a hairline card
+  .d-admin-table,
+  .admin-contents .table,
+  .admin-contents table.grid,
+  .admin-contents .directory-table {
+    border-radius: var(--sp-radius-lg);
+    box-shadow: 0 0 0 1px var(--sp-border);
+    overflow: hidden;
+  }
+
+  // --- Dashboard ------------------------------------------------------------
+
+  .dashboard {
+    .version-checks,
+    .dashboard-problems,
+    .section,
+    .admin-report {
+      background: transparent;
+    }
+
+    .dashboard-problems {
+      border-radius: var(--sp-radius-lg);
+      box-shadow: inset 0 0 0 1px var(--sp-border);
+      padding: 16px;
+      margin-bottom: 24px;
+      h3 {
+        font-size: 15px;
+        font-weight: 600;
+      }
+      .problem-messages > ul > li {
+        font-size: 13px;
+        border-bottom: 1px solid var(--sp-border);
+        padding: 8px 0;
+        &:last-child {
+          border-bottom: 0;
+        }
+      }
+      .problem-messages li li {
+        border: 0;
+        padding: 2px 0;
+      }
+    }
+
+    // Version block: label small and muted, number large (core order is
+    // h4 label then h3 value inside .version-number)
+    .version-checks {
+      .section-title h2 {
+        font-size: 15px;
+        font-weight: 600;
+        color: var(--sp-text-highlighted);
+      }
+      .version-number {
+        h4 {
+          font-size: 12px;
+          font-weight: 500;
+          color: var(--sp-text-muted);
+          text-transform: none;
+          margin-bottom: 2px;
+        }
+        h3 {
+          font-size: 20px;
+          font-weight: 600;
+          letter-spacing: -0.01em;
+          color: var(--sp-text-highlighted);
+        }
+        .sha-link {
+          font-size: 12px;
+          color: var(--sp-text-muted);
+        }
+      }
+      .version-notes {
+        font-size: 13px;
+        color: var(--sp-text-toned);
+      }
+      .upgrades-banner {
+        border-radius: var(--sp-radius-md);
+        font-size: 13px;
+      }
+    }
+
+    // Report charts: hairline cards in a grid
+    .charts .admin-report,
+    .community-health .admin-report.chart,
+    .admin-report.chart {
+      border-radius: var(--sp-radius-lg);
+      box-shadow: inset 0 0 0 1px var(--sp-border);
+      padding: 16px;
+    }
+
+    .admin-report .header,
+    .admin-report-header {
+      .title,
+      .report-title {
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--sp-text-highlighted);
+      }
+      .trend {
+        font-size: 13px;
+        font-weight: 600;
+      }
+    }
+  }
+
+  // Generic report tables / mini-tables
+  .admin-report-table {
+    border-radius: var(--sp-radius-md);
+    box-shadow: 0 0 0 1px var(--sp-border);
+    overflow: hidden;
+  }
+
+  // --- Misc ------------------------------------------------------------------
+
+  // Plugin / theme list items, config cards in newer pages
+  .admin-config-area-card,
+  .admin-config-area__aside .admin-config-area-card {
+    background: var(--sp-surface-1);
+    border: 0;
+    border-radius: var(--sp-radius-lg);
+    box-shadow: inset 0 0 0 1px var(--sp-border);
+    padding: 16px;
+
+    &__title,
+    .admin-config-area-card__title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--sp-text-highlighted);
+      text-transform: none;
+    }
+  }
+
+  .admin-config-area__settings,
+  .admin-config-page__main-area,
+  .content-body.admin-detail {
+    background: transparent;
+  }
+
+  // Theme editor & color palettes keep their own UI but lose the slab look
+  .themes-list,
+  .themes-list-container,
+  .color-scheme {
+    background: transparent;
+  }
+  .themes-list-container .themes-list-container__item {
+    border-bottom: 1px solid var(--sp-border);
+    &.selected,
+    &:hover {
+      background: var(--sp-row-hover);
+    }
+  }
+
+  // Empty states
+  .admin-contents .empty-state,
+  .admin-contents .no-results {
+    color: var(--sp-text-muted);
+    font-size: 13px;
+  }
+}
+
+// Admin sidebar: "Back to forum" + filter, same rhythm as the main sidebar
+.sidebar-sections .sidebar-filter {
+  margin: 0 4px 8px;
+  .sidebar-filter__input,
+  input {
+    min-height: 32px;
+    font-size: 13px;
+  }
+}
+.sidebar-sections__back-to-forum {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--sp-text-muted);
+  border-radius: var(--sp-radius-md);
+  &:hover {
+    background: var(--sp-row-hover);
+    color: var(--sp-text-highlighted);
+  }
+}

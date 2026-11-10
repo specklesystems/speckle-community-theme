@@ -1,0 +1,56 @@
+// Mobile: same tokens, tighter spacing, no full-bleed grid.
+
+.d-header > .wrap {
+  padding: 0 12px;
+}
+
+#main-outlet {
+  padding: 12px 12px 32px;
+}
+
+// App button collapses to the cube only
+.speckle-app-button-wrapper {
+  margin-right: 4px;
+  .speckle-app-button {
+    padding: 0;
+    width: 32px;
+    justify-content: center;
+    span {
+      display: none;
+    }
+  }
+}
+
+// Tabs scroll horizontally rather than wrap
+.list-controls .nav-pills,
+#navigation-bar {
+  max-width: 100%;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.topic-list {
+  .topic-list-item > td {
+    padding: 10px 12px;
+  }
+  .topic-list-data.topic-item-stats {
+    font-size: 12px;
+  }
+}
+
+#topic-title h1,
+#topic-title .fancy-title {
+  font-size: 20px;
+}
+
+.cooked {
+  font-size: 16px;
+}
+
+#reply-control {
+  border-radius: 0;
+}
+
+.d-modal__container {
+  border-radius: var(--sp-radius-lg) var(--sp-radius-lg) 0 0;
+}

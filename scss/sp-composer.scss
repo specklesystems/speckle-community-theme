@@ -1,0 +1,159 @@
+// ---------------------------------------------------------------------------
+// Composer — a docked UCard: top ring, lg shadow, ghost toolbar
+// ---------------------------------------------------------------------------
+
+#reply-control {
+  background: var(--sp-bg);
+  border-top: 0;
+  box-shadow: 0 -1px 0 var(--sp-border), 0 -12px 32px -12px rgba(0, 0, 0, 0.15);
+  border-radius: var(--sp-radius-lg) var(--sp-radius-lg) 0 0;
+
+  .grippie {
+    background: transparent;
+    border-radius: var(--sp-radius-lg) var(--sp-radius-lg) 0 0;
+    &::before {
+      border-top-color: var(--sp-border-accented);
+      border-bottom-color: var(--sp-border-accented);
+    }
+  }
+
+  .reply-area {
+    padding: 12px 16px;
+  }
+
+  .composer-action-title,
+  .action-title {
+    font-size: 13px;
+    color: var(--sp-text-toned);
+    a {
+      color: var(--sp-text-highlighted);
+      font-weight: 500;
+    }
+    .d-icon {
+      color: var(--sp-text-muted);
+    }
+  }
+
+  #reply-title {
+    font-size: 14px;
+    font-weight: 500;
+    min-height: 36px;
+  }
+
+  .composer-controls .btn {
+    background: transparent;
+    box-shadow: none;
+    .d-icon {
+      color: var(--sp-text-muted);
+    }
+    .discourse-no-touch &:hover {
+      background: var(--sp-bg-elevated);
+    }
+  }
+
+  &.draft {
+    box-shadow: 0 -1px 0 var(--sp-border);
+  }
+}
+
+// Editor shell
+.d-editor-container {
+  gap: 12px;
+}
+
+.d-editor-textarea-wrapper {
+  border: 1px solid var(--sp-border-accented);
+  border-radius: var(--sp-radius-md);
+  background: var(--sp-bg);
+  overflow: hidden;
+  transition: border-color 150ms, box-shadow 150ms;
+
+  &.in-focus,
+  &:focus-within {
+    border-color: var(--sp-primary);
+    box-shadow: 0 0 0 1px var(--sp-primary);
+  }
+
+  .d-editor-input {
+    border: 0;
+    box-shadow: none;
+    font-size: 16px;
+    line-height: 1.6;
+    padding: 12px;
+    &:focus {
+      box-shadow: none;
+    }
+  }
+}
+
+.d-editor-button-bar {
+  background: var(--sp-bg-muted);
+  border-bottom: 1px solid var(--sp-border);
+  padding: 4px;
+  gap: 2px;
+
+  .btn {
+    min-height: 28px;
+    min-width: 28px;
+    padding: 4px;
+    background: transparent;
+    box-shadow: none;
+    border-radius: var(--sp-radius-sm);
+    .d-icon {
+      color: var(--sp-text-muted);
+    }
+    .discourse-no-touch &:hover {
+      background: var(--sp-bg-elevated);
+      .d-icon {
+        color: var(--sp-text-highlighted);
+      }
+    }
+  }
+  .separator {
+    background: var(--sp-border);
+  }
+}
+
+.d-editor-preview-wrapper {
+  border: 0;
+  border-left: 1px solid var(--sp-border);
+  padding-left: 12px;
+}
+
+// Footer row: Create topic / Cancel
+.submit-panel,
+.save-or-cancel {
+  gap: 8px;
+  align-items: center;
+
+  .cancel {
+    font-size: 13px;
+    color: var(--sp-text-muted);
+    &:hover {
+      color: var(--sp-text-highlighted);
+    }
+  }
+}
+
+.composer-popup {
+  background: var(--sp-bg);
+  border: 0;
+  border-radius: var(--sp-radius-lg);
+  box-shadow: var(--sp-shadow-lg), 0 0 0 1px var(--sp-border);
+  font-size: 13px;
+  &.education-message {
+    background: var(--sp-bg);
+  }
+}
+
+// Category + tag choosers in composer use the select-kit look already
+.title-and-category {
+  gap: 8px;
+}
+
+// Fullscreen composer backdrop
+.composer-fullscreen-prompt {
+  background: var(--sp-bg-inverted);
+  color: var(--sp-text-inverted);
+  border-radius: var(--sp-radius-md);
+}

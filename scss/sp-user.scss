@@ -1,0 +1,386 @@
+// ---------------------------------------------------------------------------
+// User profile, preferences, groups, badges, login
+// ---------------------------------------------------------------------------
+
+.user-main {
+  .collapsed-info,
+  .about {
+    background: var(--sp-surface-2);
+    border-radius: var(--sp-radius-lg);
+    box-shadow: var(--sp-shadow-xs), 0 0 0 1px var(--sp-border);
+    overflow: hidden;
+  }
+  .about .details {
+    background: var(--sp-surface-1);
+    border-top: 1px solid var(--sp-border);
+  }
+  .primary .username,
+  .primary h1 {
+    color: var(--sp-text-highlighted);
+  }
+  .secondary dt {
+    color: var(--sp-text-muted);
+    font-size: 12px;
+  }
+  .secondary dd {
+    color: var(--sp-text);
+    font-size: 13px;
+  }
+}
+
+// Profile secondary nav (left list in prefs/activity)
+.user-navigation-secondary,
+.user-secondary-navigation {
+  .nav-pills,
+  .action-list {
+    background: transparent;
+    padding: 0;
+    gap: 2px;
+  }
+  li a {
+    border-radius: var(--sp-radius-md);
+    font-size: 13px;
+    color: var(--sp-text-toned);
+    &.active {
+      background: var(--sp-bg-elevated);
+      color: var(--sp-text-highlighted);
+      box-shadow: none;
+    }
+  }
+}
+
+// Stats / summary tiles
+.user-summary-page,
+.user-content {
+  .stats-section li,
+  .top-section .top-sub-section,
+  .user-summary-stat {
+    font-size: 13px;
+  }
+  .user-summary-stat .value {
+    color: var(--sp-text-highlighted);
+    font-weight: 600;
+  }
+}
+
+// Stream items (activity)
+.user-stream .item,
+.user-stream-item {
+  border-bottom: 1px solid var(--sp-border);
+  .title a {
+    color: var(--sp-text-highlighted);
+    font-weight: 500;
+  }
+  .time,
+  .type {
+    color: var(--sp-text-muted);
+    font-size: 12px;
+  }
+  .excerpt {
+    color: var(--sp-text-toned);
+    font-size: 13px;
+  }
+}
+
+// Preferences form rows
+.user-preferences {
+  .control-group {
+    border-bottom: 1px solid var(--sp-border);
+    padding-bottom: 16px;
+  }
+  .control-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--sp-text-highlighted);
+  }
+  .instructions {
+    font-size: 12px;
+    color: var(--sp-text-muted);
+  }
+}
+
+// Badges
+.badge-card,
+.user-badge {
+  border-radius: var(--sp-radius-md);
+}
+.user-badge {
+  background: var(--sp-bg-elevated);
+  border: 0;
+  box-shadow: inset 0 0 0 1px var(--sp-border-accented);
+  color: var(--sp-text-toned);
+  font-size: 12px;
+  font-weight: 500;
+}
+.badge-card {
+  background: var(--sp-surface-2);
+  box-shadow: var(--sp-shadow-xs), 0 0 0 1px var(--sp-border);
+}
+
+// Groups
+.groups-boxes .group-box {
+  background: var(--sp-surface-2);
+  border: 0;
+  border-radius: var(--sp-radius-lg);
+  box-shadow: var(--sp-shadow-xs), 0 0 0 1px var(--sp-border);
+  .discourse-no-touch &:hover {
+    box-shadow: var(--sp-shadow-md), 0 0 0 1px var(--sp-border);
+  }
+}
+
+// Login / signup modal panes
+.login-modal,
+.create-account {
+  .login-left-side,
+  .create-account__left-side {
+    background: var(--sp-bg);
+  }
+  .login-right-side,
+  .create-account__right-side {
+    background: var(--sp-bg-muted);
+    border-left: 1px solid var(--sp-border);
+  }
+  .btn-social {
+    background: var(--sp-bg);
+    color: var(--sp-text);
+    box-shadow: inset 0 0 0 1px var(--sp-border-accented);
+    font-weight: 500;
+    .discourse-no-touch &:hover {
+      background: var(--sp-bg-elevated);
+    }
+  }
+}
+
+// Static pages (about, faq, tos)
+.static-faq,
+.static-tos,
+.static-privacy,
+.about-page {
+  .contents,
+  section {
+    font-size: 14px;
+  }
+}
+
+// Chat (if enabled) — keep in family
+.chat-message-container.is-hovered,
+.chat-message-container:hover {
+  background: var(--sp-row-hover);
+}
+.chat-composer__wrapper {
+  border-color: var(--sp-border-accented);
+  border-radius: var(--sp-radius-md);
+}
+
+// Section headings: sentence case like frontend-3, not Discourse caps
+.user-content,
+.user-summary-page {
+  h2,
+  h3,
+  .stats-title,
+  .top-section h3,
+  .summary-user-list h3 {
+    text-transform: none;
+    letter-spacing: 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--sp-text-highlighted);
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Profile header — a padded card: avatar, names and actions on one top line,
+// the stats strip as a hairline-separated footer, tabs as a compact
+// segmented control below. Core gives the card no padding, floats the avatar
+// with an 8px margin, reserves 312px beside the text for the buttons and
+// stretches every tab across the full width.
+// ---------------------------------------------------------------------------
+
+.user-main .about {
+  .details {
+    padding: 0;
+    background: transparent;
+    border-top: 0;
+  }
+
+  .primary {
+    padding: 24px;
+    gap: 24px;
+    align-items: flex-start;
+  }
+
+  .user-profile-avatar {
+    flex: 0 0 auto;
+    img.avatar {
+      margin: 0;
+      float: none;
+      width: 96px;
+      height: 96px;
+    }
+  }
+
+  .primary-textual {
+    flex: 1 1 auto;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+  }
+
+  .user-profile-names {
+    .user-profile-names__primary,
+    .username {
+      font-size: 24px;
+      font-weight: 600;
+      letter-spacing: -0.015em;
+      line-height: 1.2;
+      color: var(--sp-text-highlighted);
+    }
+    .user-profile-names__secondary,
+    .full-name {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--sp-text-toned);
+      margin-top: 2px;
+    }
+    .user-profile-names__title,
+    .user-title {
+      font-size: 13px;
+      color: var(--sp-text-muted);
+      margin-top: 2px;
+    }
+  }
+
+  .location-and-website {
+    font-size: 13px;
+    color: var(--sp-text-muted);
+    margin-top: 8px;
+    gap: 12px;
+  }
+
+  .bio {
+    font-size: 14px;
+    color: var(--sp-text);
+    margin-top: 12px;
+    max-width: 72ch;
+  }
+
+  .public-user-fields {
+    font-size: 13px;
+    margin: 12px 0 0;
+    color: var(--sp-text);
+    .user-field-name {
+      font-weight: 600;
+      color: var(--sp-text-highlighted);
+    }
+  }
+
+  // Actions column: right-aligned, same width buttons
+  section.controls {
+    flex: 0 0 auto;
+    margin: 0 0 0 auto;
+
+    ul {
+      flex-direction: column;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+    }
+    li {
+      margin: 0;
+    }
+    .btn,
+    .select-kit .select-kit-header {
+      width: 100%;
+      min-width: 140px;
+      justify-content: center;
+    }
+  }
+
+  // Stats strip as the card's footer
+  .secondary {
+    display: block;
+    border-top: 1px solid var(--sp-border);
+    background: var(--sp-surface-1);
+
+    dl {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 24px;
+      padding: 12px 24px;
+      margin: 0;
+
+      > div {
+        margin: 0;
+        gap: 6px;
+        align-items: center;
+        min-height: 24px;
+      }
+    }
+    dt {
+      font-size: 12px;
+      color: var(--sp-text-muted);
+      margin: 0;
+    }
+    dd {
+      font-size: 13px;
+      color: var(--sp-text-highlighted);
+      margin: 0;
+    }
+    // "Show email" and similar inline actions: small text buttons
+    .btn,
+    .btn-primary {
+      min-height: 24px;
+      height: 24px;
+      padding: 0 6px;
+      font-size: 12px;
+      background: transparent;
+      color: var(--sp-primary);
+      box-shadow: none;
+      .d-icon {
+        color: var(--sp-primary);
+        font-size: 12px;
+      }
+      .discourse-no-touch &:hover {
+        background: var(--sp-primary-soft);
+        color: var(--sp-primary);
+      }
+    }
+  }
+}
+
+// Profile tabs: compact segmented control, not stretched edge to edge
+.user-navigation-primary {
+  margin-top: 16px;
+  border-bottom: 0;
+
+  .horizontal-overflow-nav {
+    border-bottom: 0;
+    width: auto;
+  }
+  .nav-pills.main-nav {
+    width: auto;
+    max-width: 100%;
+    > li {
+      flex: 0 0 auto;
+    }
+  }
+}
+
+// Specificity overrides for the profile header (core uses deeper selectors)
+.user-main .about .details .primary {
+  box-sizing: border-box;
+  width: 100%;
+
+  .primary-textual {
+    flex: 1 1 auto;
+    margin: 0;
+  }
+  section.controls {
+    margin: 0 0 0 auto;
+    max-width: none;
+  }
+}
+
+section.user-navigation.user-navigation-primary {
+  border-bottom: 0;
+}

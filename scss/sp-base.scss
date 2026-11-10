@@ -1,0 +1,129 @@
+// ---------------------------------------------------------------------------
+// Base: type, Discourse token remap, scrollbars, focus, selection
+// ---------------------------------------------------------------------------
+
+:root {
+  // Type — Inter is already served by Discourse at /fonts/InterVariable.woff2
+  --font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --heading-font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  // frontend-3 reads at 14px with 13px controls; Discourse's text-size
+  // preference still scales from here.
+  --base-font-size-smallest: 0.75em;
+  --base-font-size-smaller: 0.8125em;
+  --base-font-size: 0.875em;
+  --base-font-size-larger: 0.9375em;
+  --base-font-size-largest: 1em;
+
+  // Radii: Nuxt UI --ui-radius 4px → sm 4 / md 6 / lg 8
+  --sp-radius-sm: 4px;
+  --sp-radius-md: 6px;
+  --sp-radius-lg: 8px;
+  --d-border-radius: var(--sp-radius-md);
+  --d-border-radius-large: var(--sp-radius-lg);
+  --d-button-border-radius: var(--sp-radius-md);
+  --d-input-border-radius: var(--sp-radius-md);
+  --d-nav-pill-border-radius: var(--sp-radius-md);
+  --d-post-control-border-radius: var(--sp-radius-md);
+  --d-button-transition: background-color 150ms, color 150ms, box-shadow 150ms;
+
+  // Header height matches frontend-3 --ui-header-height
+  --sp-header-height: 56px;
+
+  // Discourse component tokens → frontend-3 tokens
+  --d-content-background: var(--sp-surface-0);
+  --d-hover: var(--sp-bg-elevated);
+  --d-selected: var(--sp-primary-soft);
+  --d-input-bg-color: var(--sp-bg);
+  --d-input-text-color: var(--sp-text-highlighted);
+  --d-input-border: 1px solid var(--sp-border-accented);
+  --d-input-bg-color--disabled: var(--sp-bg-muted);
+  --d-input-text-color--disabled: var(--sp-text-dimmed);
+  --d-input-border--disabled: 1px solid var(--sp-border);
+  --d-nav-color: var(--sp-text-muted);
+  --d-nav-color--hover: var(--sp-text-highlighted);
+  --d-nav-color--active: var(--sp-text-highlighted);
+  --d-nav-bg-color--hover: transparent;
+  --d-nav-border-color--active: transparent;
+  --d-nav-underline-height: 0;
+  --d-post-control-text-color: var(--sp-text-muted);
+  --d-post-control-icon-color: var(--sp-text-muted);
+  --d-post-control-text-color--hover: var(--sp-text-highlighted);
+  --d-post-control-icon-color--hover: var(--sp-text-highlighted);
+  --d-post-control-background--hover: var(--sp-bg-elevated);
+  --d-post-control-create-text-color: var(--sp-text-toned);
+  --d-post-control-create-icon-color: var(--sp-text-toned);
+  --d-tooltip-background: var(--sp-bg);
+  --d-tooltip-border: var(--sp-border);
+}
+
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--sp-scroll-thumb) transparent;
+}
+
+body {
+  background: var(--sp-surface-0);
+  color: var(--sp-text);
+  font-feature-settings: "cv11", "ss01";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--sp-text-highlighted);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+a {
+  color: var(--sp-primary);
+}
+
+::selection {
+  background: var(--sp-primary-ring);
+}
+
+*:focus-visible {
+  outline: 2px solid var(--sp-primary);
+  outline-offset: 2px;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--sp-scroll-thumb);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--sp-scroll-thumb-hover);
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+hr {
+  border-color: var(--sp-border);
+}
+
+.relative-date,
+.num,
+.number {
+  font-variant-numeric: tabular-nums;
+}
+
+// Spinner + loading slider in primary
+.spinner {
+  border-color: var(--sp-bg-accented);
+  border-right-color: var(--sp-primary);
+}
+.loading-indicator-container .loading-indicator {
+  background: var(--sp-primary);
+}

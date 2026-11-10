@@ -1,0 +1,19 @@
+// Speckle Community — frontend-3 look.
+// Tokens live in color_definitions.scss (per scheme); everything here
+// consumes --sp-* so light/dark both work without duplication.
+// Partials are sp-prefixed: Discourse resolves @import against core
+// stylesheets too, and core already has "admin", "header", etc.
+
+@import "sp-base";
+@import "sp-controls";
+@import "sp-header";
+@import "sp-sidebar";
+@import "sp-layout";
+@import "sp-topic-list";
+@import "sp-categories";
+@import "sp-topic";
+@import "sp-cooked";
+@import "sp-composer";
+@import "sp-overlays";
+@import "sp-user";
+@import "sp-admin";

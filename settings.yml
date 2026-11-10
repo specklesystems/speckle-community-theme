@@ -1,0 +1,12 @@
+show_app_button:
+  default: true
+  description: Show a button in the header that opens the Speckle web app.
+app_button_label:
+  default: "Open Speckle"
+  description: Label for the header app button.
+app_url:
+  default: "https://app.speckle.systems"
+  description: Where the header app button points.
+full_bleed_layout:
+  default: true
+  description: Dashboard layout like frontend-3 (sidebar flush to the left edge, header spans the full width). Turn off to keep Discourse's centred layout.

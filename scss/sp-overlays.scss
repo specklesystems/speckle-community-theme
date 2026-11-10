@@ -1,0 +1,308 @@
+// ---------------------------------------------------------------------------
+// Overlays — UModal, UDropdownMenu, UPopover, UTooltip, user/search menus
+// ---------------------------------------------------------------------------
+
+// --- Modal -----------------------------------------------------------------
+
+.d-modal__backdrop {
+  background: var(--sp-overlay);
+  opacity: 1;
+}
+
+.d-modal__container {
+  background: var(--sp-bg);
+  border: 0;
+  border-radius: var(--sp-radius-lg);
+  box-shadow: var(--sp-shadow-lg), 0 0 0 1px var(--sp-border);
+}
+
+.d-modal__header {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--sp-border);
+  min-height: 48px;
+  box-sizing: border-box;
+
+  .d-modal__title-text,
+  h1,
+  h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--sp-text-highlighted);
+  }
+  .modal-close {
+    min-height: 28px;
+    min-width: 28px;
+  }
+}
+
+.d-modal__body {
+  padding: 16px;
+  font-size: 13px;
+}
+
+.d-modal__footer {
+  padding: 12px 16px;
+  border-top: 1px solid var(--sp-border);
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+// --- Float-kit menus & tooltips -------------------------------------------
+
+.fk-d-menu,
+.fk-d-menu-modal {
+  .fk-d-menu__inner-content {
+    background: var(--sp-bg);
+    border: 0;
+    border-radius: var(--sp-radius-md);
+    box-shadow: var(--sp-shadow-lg), 0 0 0 1px var(--sp-border);
+    padding: 4px;
+  }
+}
+
+// Dropdown menu items (UDropdownMenu item)
+.dropdown-menu {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  padding: 0;
+
+  &__item {
+    border-radius: var(--sp-radius-sm);
+  }
+
+  .btn {
+    width: 100%;
+    justify-content: flex-start;
+    background: transparent;
+    box-shadow: none;
+    border-radius: var(--sp-radius-sm);
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--sp-text);
+    padding: 6px 8px;
+    min-height: 0;
+
+    .d-icon {
+      color: var(--sp-text-muted);
+    }
+    .discourse-no-touch &:hover,
+    &:focus-visible {
+      background: var(--sp-bg-elevated);
+      color: var(--sp-text-highlighted);
+      .d-icon {
+        color: var(--sp-text-highlighted);
+      }
+    }
+    &.btn-danger,
+    &.--danger {
+      color: var(--sp-error);
+      .d-icon {
+        color: var(--sp-error);
+      }
+    }
+  }
+  hr,
+  .dropdown-menu__divider {
+    border-color: var(--sp-border);
+    margin: 4px -4px;
+  }
+}
+
+.fk-d-tooltip {
+  .fk-d-tooltip__inner-content {
+    background: var(--sp-bg);
+    color: var(--sp-text-highlighted);
+    border: 0;
+    border-radius: var(--sp-radius-sm);
+    box-shadow: var(--sp-shadow-sm), 0 0 0 1px var(--sp-border);
+    font-size: 12px;
+    padding: 4px 8px;
+  }
+  .arrow {
+    display: none;
+  }
+}
+
+// --- Menu panels (user menu, search, hamburger) ---------------------------
+
+.menu-panel {
+  background: var(--sp-bg);
+  border: 0;
+  border-radius: var(--sp-radius-lg);
+  box-shadow: var(--sp-shadow-lg), 0 0 0 1px var(--sp-border);
+
+  .panel-body {
+    background: transparent;
+  }
+}
+
+.user-menu.revamped {
+  .menu-tabs-container {
+    background: var(--sp-bg-muted);
+    border-left: 1px solid var(--sp-border);
+
+    .btn.user-menu-tab {
+      border-radius: var(--sp-radius-md);
+      margin: 2px 4px;
+      .d-icon {
+        color: var(--sp-text-muted);
+      }
+      &.active {
+        background: var(--sp-bg-elevated);
+        .d-icon {
+          color: var(--sp-text-highlighted);
+        }
+      }
+      .discourse-no-touch &:hover {
+        background: var(--sp-bg-elevated);
+      }
+      .badge-notification {
+        box-shadow: 0 0 0 2px var(--sp-bg-muted);
+      }
+    }
+  }
+
+  .quick-access-panel {
+    padding: 4px;
+
+    li {
+      border-radius: var(--sp-radius-md);
+      font-size: 13px;
+      color: var(--sp-text);
+      a {
+        color: var(--sp-text);
+        border-radius: var(--sp-radius-md);
+      }
+      &.unread,
+      &.pending {
+        background: var(--sp-primary-soft);
+      }
+      .discourse-no-touch &:hover,
+      a:hover {
+        background: var(--sp-bg-elevated);
+      }
+      .d-icon {
+        color: var(--sp-text-muted);
+      }
+      .item-label,
+      span:first-child {
+        color: var(--sp-text-highlighted);
+        font-weight: 500;
+      }
+      .item-description {
+        color: var(--sp-text-muted);
+      }
+    }
+  }
+
+  .panel-body-bottom {
+    border-top: 1px solid var(--sp-border);
+    padding: 8px;
+    gap: 4px;
+  }
+}
+
+// Search menu
+.search-menu {
+  .search-input {
+    border: 1px solid var(--sp-border-accented);
+    border-radius: var(--sp-radius-md);
+    background: var(--sp-bg);
+
+    &:focus-within {
+      border-color: var(--sp-primary);
+      box-shadow: 0 0 0 1px var(--sp-primary);
+    }
+    input#search-term,
+    input.search-term__input {
+      border: 0;
+      box-shadow: none;
+      font-size: 14px;
+    }
+  }
+  .results {
+    font-size: 13px;
+    .search-result-topic .topic-title,
+    .search-link .topic-title {
+      color: var(--sp-text-highlighted);
+      font-weight: 500;
+    }
+    .search-link {
+      border-radius: var(--sp-radius-md);
+      .discourse-no-touch &:hover,
+      &:focus {
+        background: var(--sp-bg-elevated);
+      }
+    }
+    .blurb {
+      color: var(--sp-text-muted);
+    }
+    .search-highlight {
+      color: var(--sp-text-highlighted);
+      font-weight: 600;
+      background: var(--sp-primary-soft);
+      border-radius: 2px;
+    }
+  }
+  .search-menu-assistant .search-menu-assistant-item {
+    border-radius: var(--sp-radius-md);
+  }
+}
+
+// --- Cards -----------------------------------------------------------------
+
+.user-card,
+.group-card {
+  background: var(--sp-bg);
+  border: 0;
+  border-radius: var(--sp-radius-lg);
+  box-shadow: var(--sp-shadow-lg), 0 0 0 1px var(--sp-border);
+  font-size: 13px;
+
+  .card-content {
+    padding: 16px;
+  }
+  .names__primary,
+  .user-profile-link,
+  .name {
+    color: var(--sp-text-highlighted);
+    font-weight: 600;
+  }
+  .names__secondary,
+  .username,
+  .metadata {
+    color: var(--sp-text-muted);
+  }
+  .card-row:not(:first-of-type) {
+    border-top: 1px solid var(--sp-border);
+  }
+  .bio {
+    color: var(--sp-text-toned);
+  }
+}
+
+// Emoji picker, date picker, etc.
+.emoji-picker {
+  background: var(--sp-bg);
+  border: 0;
+  border-radius: var(--sp-radius-lg);
+  box-shadow: var(--sp-shadow-lg), 0 0 0 1px var(--sp-border);
+}
+
+// Toasts (UToast — compact)
+.fk-d-toasts .fk-d-default-toast {
+  background: var(--sp-bg);
+  border-radius: var(--sp-radius-md);
+  box-shadow: var(--sp-shadow-lg), 0 0 0 1px var(--sp-border);
+  font-size: 12px;
+}
+
+.user-menu.revamped .menu-tabs-container .badge-notification {
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  font-size: 10px;
+  line-height: 16px;
+  box-sizing: border-box;
+}

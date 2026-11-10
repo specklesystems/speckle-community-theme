@@ -1,0 +1,55 @@
+// frontend-3 tokens (Nuxt UI v4, neutral: zinc, primary: blue).
+// Compiled once per colour scheme, so dark-light-choose resolves the
+// light/dark pair from whichever scheme is active. Mirrors
+// packages/frontend-3/assets/css/main.css + @nuxt/ui runtime defaults.
+
+:root {
+  // Backgrounds  (--ui-bg-*)
+  --sp-bg: #{dark-light-choose(#ffffff, #18181b)};
+  --sp-bg-muted: #{dark-light-choose(#fafafa, #27272a)};
+  --sp-bg-elevated: #{dark-light-choose(#f4f4f5, #27272a)};
+  --sp-bg-accented: #{dark-light-choose(#e4e4e7, #3f3f46)};
+  --sp-bg-inverted: #{dark-light-choose(#18181b, #ffffff)};
+
+  // App surfaces (--surface-0/1/2)
+  --sp-surface-0: #{dark-light-choose(#fafafa, #09090b)};
+  --sp-surface-1: #{dark-light-choose(#fcfcfc, #111113)};
+  --sp-surface-2: #{dark-light-choose(#ffffff, #0f0f11)};
+
+  // Borders (--ui-border-*)
+  --sp-border: #{dark-light-choose(#e4e4e7, #27272a)};
+  --sp-border-muted: #{dark-light-choose(#e4e4e7, #3f3f46)};
+  --sp-border-accented: #{dark-light-choose(#d4d4d8, #3f3f46)};
+
+  // Text (--ui-text-*)
+  --sp-text: #{dark-light-choose(#3f3f46, #e4e4e7)};
+  --sp-text-highlighted: #{dark-light-choose(#18181b, #ffffff)};
+  --sp-text-toned: #{dark-light-choose(#52525c, #d4d4d8)};
+  --sp-text-muted: #{dark-light-choose(#71717b, #9f9fa9)};
+  --sp-text-dimmed: #{dark-light-choose(#9f9fa9, #71717b)};
+  --sp-text-inverted: #{dark-light-choose(#ffffff, #18181b)};
+
+  // Semantic (--ui-primary etc.)
+  --sp-primary: #{dark-light-choose(#2b7fff, #51a2ff)};
+  --sp-primary-hover: #{dark-light-choose(#155dfc, #8ec5ff)};
+  --sp-primary-soft: #{dark-light-choose(rgba(43, 127, 255, 0.1), rgba(81, 162, 255, 0.12))};
+  --sp-primary-ring: #{dark-light-choose(rgba(43, 127, 255, 0.25), rgba(81, 162, 255, 0.3))};
+  --sp-error: #{dark-light-choose(#fb2c36, #ff6467)};
+  --sp-error-soft: #{dark-light-choose(rgba(251, 44, 54, 0.1), rgba(255, 100, 103, 0.12))};
+  --sp-success: #{dark-light-choose(#00c950, #05df72)};
+  --sp-success-soft: #{dark-light-choose(rgba(0, 201, 80, 0.1), rgba(5, 223, 114, 0.12))};
+  --sp-warning: #{dark-light-choose(#f0b100, #fdc700)};
+  --sp-warning-text: #{dark-light-choose(#b45309, #fbbf24)};
+  --sp-warning-soft: #{dark-light-choose(rgba(240, 177, 0, 0.1), rgba(253, 199, 0, 0.1))};
+
+  // Misc
+  --sp-overlay: #{dark-light-choose(rgba(244, 244, 245, 0.75), rgba(39, 39, 42, 0.75))};
+  --sp-row-hover: #{dark-light-choose(rgba(244, 244, 245, 0.5), rgba(39, 39, 42, 0.5))};
+  --sp-scroll-thumb: #{dark-light-choose(rgba(0, 0, 0, 0.25), rgba(255, 255, 255, 0.25))};
+  --sp-scroll-thumb-hover: #{dark-light-choose(rgba(0, 0, 0, 0.4), rgba(255, 255, 255, 0.4))};
+  --sp-shadow-xs: #{dark-light-choose(0 1px 2px 0 rgba(0, 0, 0, 0.05), 0 1px 2px 0 rgba(0, 0, 0, 0.3))};
+  --sp-shadow-sm: #{dark-light-choose(0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 3px 0 rgba(0, 0, 0, 0.4))};
+  --sp-shadow-md: #{dark-light-choose(0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 4px 6px -1px rgba(0, 0, 0, 0.4))};
+  --sp-shadow-lg: #{dark-light-choose(0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 10px 15px -3px rgba(0, 0, 0, 0.5))};
+  --sp-code-bg: #{dark-light-choose(#ffffff, #0f0f11)};
+}

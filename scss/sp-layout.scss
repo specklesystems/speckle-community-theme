@@ -1,0 +1,200 @@
+// ---------------------------------------------------------------------------
+// Layout — UDashboardGroup: sidebar flush left, header full width, content
+// in a centred 1280px container. Gated on the full_bleed_layout setting via
+// the body class added in api-initializers/speckle-theme.gjs.
+// ---------------------------------------------------------------------------
+
+.speckle-full-bleed {
+  .d-header > .wrap {
+    max-width: none;
+    padding: 0 16px;
+  }
+
+  &.has-sidebar-page #main-outlet-wrapper {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    gap: 0;
+    grid-template-columns: var(--d-sidebar-width) minmax(0, 1fr);
+  }
+
+  &.has-sidebar-page .sidebar-wrapper {
+    margin-left: 0;
+  }
+
+  &.has-sidebar-page #main-outlet {
+    padding: 24px 24px 48px;
+    max-width: 1280px;
+    width: 100%;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+}
+
+#main-outlet-wrapper,
+#main-outlet {
+  background: transparent;
+}
+
+// --- List controls: tabs + filters + actions -------------------------------
+
+.list-controls {
+  .container {
+    padding: 0;
+  }
+  .navigation-container {
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+  }
+  .category-breadcrumb {
+    gap: 6px;
+    margin: 0;
+  }
+  // Core gives this wrapper a bottom margin, which lifts New Topic off the
+  // shared centre line in the flex row. One 32px row for every control.
+  .navigation-controls {
+    gap: 8px;
+    margin: 0;
+    align-items: center;
+  }
+  .category-breadcrumb,
+  .navigation-controls,
+  .navigation-controls .fk-d-button-tooltip {
+    align-items: center;
+    margin-bottom: 0;
+  }
+}
+
+// Segmented tabs (UTabs pill): track on bg-elevated, active item lifts
+.nav-pills,
+#navigation-bar {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 3px;
+  margin: 0;
+  height: 32px;
+  box-sizing: border-box;
+  background: var(--sp-bg-elevated);
+  border-radius: var(--sp-radius-lg);
+
+  > li {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    height: 100%;
+
+    > a,
+    > button {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      height: 26px;
+      padding: 0 10px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--sp-text-muted);
+      background: transparent;
+      border: 0;
+      border-radius: var(--sp-radius-md);
+      transition: background-color 150ms, color 150ms, box-shadow 150ms;
+
+      &::after {
+        display: none !important;
+      }
+      .discourse-no-touch &:hover {
+        color: var(--sp-text-highlighted);
+        background: transparent;
+      }
+      &.active {
+        background: var(--sp-bg);
+        color: var(--sp-text-highlighted);
+        box-shadow: var(--sp-shadow-xs), 0 0 0 1px var(--sp-border);
+      }
+      .badge-notification {
+        font-size: 10px;
+      }
+    }
+  }
+}
+
+// Bulk select bar, banners
+.bulk-select-buttons-wrap,
+#list-area .topic-list-bottom {
+  font-size: 13px;
+}
+
+.topic-list-bottom .footer-message {
+  color: var(--sp-text-muted);
+  font-size: 13px;
+  h3 {
+    font-size: 14px;
+  }
+}
+
+// Page headings across discovery
+.category-heading,
+.tag-show-heading,
+.discourse-tags h2 {
+  color: var(--sp-text-highlighted);
+}
+
+// Global notice / banner topic
+#banner {
+  background: var(--sp-surface-2);
+  border-radius: var(--sp-radius-lg);
+  box-shadow: inset 0 0 0 1px var(--sp-border);
+  color: var(--sp-text);
+  font-size: 13px;
+}
+
+.global-notice .row .alert-global-notice {
+  border-radius: 0;
+  box-shadow: none;
+  border-bottom: 1px solid var(--sp-border);
+  background: var(--sp-bg-muted);
+}
+
+// --- discourse-search-banner component ------------------------------------
+// Page-header scale rather than hero scale; hidden on topic pages.
+
+.custom-search-banner {
+  .custom-search-banner-wrap {
+    padding: 8px 0 24px;
+    max-width: 640px;
+  }
+  h1 {
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--sp-text-highlighted);
+    margin-bottom: 4px;
+  }
+  p {
+    font-size: 14px;
+    color: var(--sp-text-muted);
+    margin-bottom: 16px;
+  }
+  .search-menu .search-input,
+  .search-input {
+    min-height: 40px;
+    box-shadow: var(--sp-shadow-xs);
+  }
+}
+
+// Discovery pages only (topic lists, categories) — not topics, profiles, prefs
+.custom-search-banner {
+  display: none;
+}
+body[class*="navigation-"] .custom-search-banner {
+  display: block;
+}
+
+// Preview notice
+.alert.alert-info.preview-theme,
+#main-outlet > .alert-info:first-child {
+  margin-bottom: 16px;
+}

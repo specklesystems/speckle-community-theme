@@ -1,0 +1,39 @@
+{
+  "name": "Speckle",
+  "component": false,
+  "authors": "Speckle",
+  "about_url": "https://speckle.community",
+  "license_url": null,
+  "theme_version": "0.1.0",
+  "minimum_discourse_version": "3.4.0",
+  "color_schemes": {
+    "Speckle Light": {
+      "primary": "18181b",
+      "secondary": "ffffff",
+      "tertiary": "2b7fff",
+      "quaternary": "2b7fff",
+      "header_background": "ffffff",
+      "header_primary": "18181b",
+      "highlight": "bedbff",
+      "selected": "eff6ff",
+      "hover": "f4f4f5",
+      "danger": "fb2c36",
+      "success": "00c950",
+      "love": "fb2c36"
+    },
+    "Speckle Dark": {
+      "primary": "f4f4f5",
+      "secondary": "18181b",
+      "tertiary": "51a2ff",
+      "quaternary": "51a2ff",
+      "header_background": "18181b",
+      "header_primary": "f4f4f5",
+      "highlight": "1c398e",
+      "selected": "162456",
+      "hover": "27272a",
+      "danger": "ff6467",
+      "success": "05df72",
+      "love": "ff6467"
+    }
+  }
+}

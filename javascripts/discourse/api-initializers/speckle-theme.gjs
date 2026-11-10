@@ -1,0 +1,20 @@
+import { apiInitializer } from "discourse/lib/api";
+import SpeckleAppButton from "../components/speckle-app-button";
+
+export default apiInitializer((api) => {
+  if (settings.full_bleed_layout) {
+    document.body.classList.add("speckle-full-bleed");
+  }
+
+  // Keep the full logo in the header when scrolled into a topic, like the
+  // frontend-3 workspace switcher, instead of core swapping in logo_small.
+  // On desktop the logo area is reserved at sidebar width, so the topic
+  // title still fits beside it.
+  api.registerValueTransformer("home-logo-minimized", ({ value }) =>
+    api.container.lookup("service:site")?.desktopView ? false : value
+  );
+
+  if (settings.show_app_button && settings.app_url) {
+    api.headerIcons.add("speckle-app", SpeckleAppButton, { before: "search" });
+  }
+});

@@ -1,0 +1,373 @@
+// ---------------------------------------------------------------------------
+// Controls: UButton / UInput / USelect / UBadge / UAlert equivalents
+// ---------------------------------------------------------------------------
+
+// --- Buttons ---------------------------------------------------------------
+// Nuxt UI md: px-2.5 py-1.5, text 13px (app.config override), font-medium,
+// rounded-md, gap-1.5. Variants: solid primary, outline neutral, ghost neutral.
+
+.btn {
+  font-family: var(--font-family);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 20px;
+  min-height: 32px;
+  padding: 6px 10px;
+  gap: 6px;
+  border: 0;
+  border-radius: var(--sp-radius-md);
+  box-shadow: none;
+  transition: var(--d-button-transition);
+
+  .d-icon {
+    font-size: 14px;
+    margin-right: 0;
+  }
+  .d-icon + .d-button-label,
+  .d-button-label + .d-icon {
+    margin-left: 0;
+  }
+  &[disabled],
+  &.disabled {
+    opacity: 0.5;
+  }
+}
+
+.btn.btn-small {
+  min-height: 28px;
+  padding: 4px 8px;
+  font-size: 12px;
+}
+
+.btn.btn-large {
+  min-height: 36px;
+  padding: 8px 12px;
+  font-size: 14px;
+}
+
+// Outline / neutral — Discourse's default button
+.btn-default {
+  background: var(--sp-bg);
+  color: var(--sp-text);
+  box-shadow: inset 0 0 0 1px var(--sp-border-accented);
+
+  .d-icon {
+    color: var(--sp-text-muted);
+  }
+  .discourse-no-touch &:hover,
+  &:focus-visible {
+    background: var(--sp-bg-elevated);
+    color: var(--sp-text-highlighted);
+    .d-icon {
+      color: var(--sp-text-highlighted);
+    }
+  }
+  &:active {
+    background: var(--sp-bg-accented);
+  }
+}
+
+// Solid / primary
+.btn-primary,
+#create-topic,
+.topic-footer-main-buttons .create,
+#reply-control .save-or-cancel .btn-primary {
+  background: var(--sp-primary);
+  color: var(--sp-text-inverted);
+  box-shadow: none;
+
+  .d-icon {
+    color: var(--sp-text-inverted);
+  }
+  .discourse-no-touch &:hover,
+  &:focus-visible {
+    background: var(--sp-primary-hover);
+    color: var(--sp-text-inverted);
+    .d-icon {
+      color: var(--sp-text-inverted);
+    }
+  }
+  &:active {
+    background: var(--sp-primary-hover);
+  }
+}
+
+// Solid / error
+.btn-danger {
+  background: var(--sp-error);
+  color: #fff;
+  .d-icon {
+    color: #fff;
+  }
+  .discourse-no-touch &:hover {
+    background: color-mix(in srgb, var(--sp-error) 85%, black);
+    color: #fff;
+  }
+}
+
+// Ghost / neutral
+.btn-flat,
+.btn-transparent {
+  background: transparent;
+  color: var(--sp-text-muted);
+  box-shadow: none;
+
+  .d-icon {
+    color: var(--sp-text-muted);
+  }
+  .discourse-no-touch &:hover,
+  &:focus-visible {
+    background: var(--sp-bg-elevated);
+    color: var(--sp-text-highlighted);
+    .d-icon {
+      color: var(--sp-text-highlighted);
+    }
+  }
+}
+
+.btn-link {
+  color: var(--sp-primary);
+  font-weight: 500;
+}
+
+// Icon-only buttons are square
+.btn.no-text,
+.btn.btn-icon:not(.btn-icon-text) {
+  min-width: 32px;
+  justify-content: center;
+}
+
+// --- Inputs ---------------------------------------------------------------
+// UInput outline md: ring-1 inset ring-accented, rounded-md, px-2.5 py-1.5,
+// 13px; focus: ring-2 ring-primary.
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="url"],
+input[type="tel"],
+input[type="date"],
+input[type="datetime-local"],
+input[type="time"],
+textarea,
+.d-editor-input {
+  font-family: var(--font-family);
+  font-size: 13px;
+  color: var(--sp-text-highlighted);
+  background: var(--sp-bg);
+  border: 1px solid var(--sp-border-accented);
+  border-radius: var(--sp-radius-md);
+  box-shadow: none;
+  transition: border-color 150ms, box-shadow 150ms;
+
+  &::placeholder {
+    color: var(--sp-text-dimmed);
+  }
+  &:focus,
+  &:focus-visible {
+    border-color: var(--sp-primary);
+    box-shadow: 0 0 0 1px var(--sp-primary);
+    outline: 0;
+  }
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="url"],
+input[type="tel"] {
+  min-height: 32px;
+  padding: 6px 10px;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  accent-color: var(--sp-primary);
+}
+
+label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--sp-text-highlighted);
+}
+
+// --- Select-kit (USelect / USelectMenu) ------------------------------------
+
+.select-kit {
+  .select-kit-header {
+    font-size: 13px;
+    font-weight: 400;
+    min-height: 32px;
+    padding: 4px 10px;
+    color: var(--sp-text);
+    background: var(--sp-bg);
+    border: 1px solid var(--sp-border-accented);
+    border-radius: var(--sp-radius-md);
+    box-shadow: none;
+    transition: border-color 150ms, background-color 150ms;
+
+    .d-icon {
+      color: var(--sp-text-muted);
+    }
+    .discourse-no-touch &:hover {
+      background: var(--sp-bg-elevated);
+    }
+  }
+  &.is-expanded .select-kit-header,
+  .select-kit-header:focus-visible {
+    border-color: var(--sp-primary);
+    box-shadow: 0 0 0 1px var(--sp-primary);
+    outline: 0;
+  }
+
+  .select-kit-body {
+    background: var(--sp-bg);
+    border: 1px solid var(--sp-border);
+    border-radius: var(--sp-radius-md);
+    box-shadow: var(--sp-shadow-lg);
+    padding: 4px;
+  }
+
+  .select-kit-filter {
+    border-bottom: 1px solid var(--sp-border);
+    padding: 4px 4px 6px;
+    .filter-input {
+      border: 0;
+      box-shadow: none;
+      min-height: 28px;
+    }
+  }
+
+  .select-kit-collection {
+    padding: 4px 0;
+  }
+
+  .select-kit-row {
+    font-size: 13px;
+    color: var(--sp-text);
+    padding: 6px 8px;
+    border-radius: var(--sp-radius-sm);
+    margin: 0 2px;
+
+    &.is-highlighted,
+    .discourse-no-touch &:hover {
+      background: var(--sp-bg-elevated);
+      color: var(--sp-text-highlighted);
+    }
+    &.is-selected {
+      background: transparent;
+      color: var(--sp-text-highlighted);
+      font-weight: 500;
+    }
+    &.is-selected.is-highlighted {
+      background: var(--sp-bg-elevated);
+    }
+    .desc,
+    .category-desc {
+      color: var(--sp-text-muted);
+      font-size: 12px;
+    }
+  }
+}
+
+// Ghost-header select-kits (bulk menus, etc.) keep the ghost look
+.select-kit.dropdown-select-box .select-kit-header.btn-flat,
+.select-kit.dropdown-select-box .select-kit-header:not(.btn-default) {
+  border-color: transparent;
+}
+
+// --- Badges ---------------------------------------------------------------
+
+// Counters (UBadge solid primary, pill)
+.badge-notification {
+  background: var(--sp-primary);
+  color: var(--sp-text-inverted);
+  font-size: 11px;
+  font-weight: 600;
+  border-radius: 9999px;
+  min-width: 18px;
+  padding: 2px 6px;
+  line-height: 1;
+
+  &.new-topic {
+    padding: 0;
+    min-width: 0;
+  }
+}
+
+// Tags (UBadge subtle neutral)
+.discourse-tag {
+  font-size: 11.5px;
+  font-weight: 500;
+  color: var(--sp-text-toned) !important;
+
+  &.box,
+  &.simple,
+  &.bullet {
+    background: var(--sp-bg-elevated);
+    box-shadow: inset 0 0 0 1px var(--sp-border-accented);
+    border-radius: var(--sp-radius-sm);
+    padding: 1px 6px;
+    margin-right: 4px;
+    &::before {
+      display: none;
+    }
+  }
+  .discourse-no-touch &:hover {
+    color: var(--sp-text-highlighted) !important;
+    background: var(--sp-bg-accented);
+  }
+}
+.discourse-tags .discourse-tag.simple::after {
+  content: none;
+}
+
+// Categories: keep the colour square, quiet the name
+.badge-category__wrapper {
+  .badge-category__name {
+    color: var(--sp-text-toned);
+    font-weight: 500;
+  }
+  .badge-category::before {
+    border-radius: 2px;
+  }
+}
+
+// --- Alerts (UAlert subtle) -----------------------------------------------
+
+.alert {
+  font-size: 13px;
+  border-radius: var(--sp-radius-lg);
+  border: 0;
+  padding: 12px 16px;
+  color: var(--sp-text);
+  box-shadow: inset 0 0 0 1px var(--sp-border);
+
+  &.alert-info {
+    background: var(--sp-primary-soft);
+    box-shadow: inset 0 0 0 1px var(--sp-primary-ring);
+  }
+  &.alert-success {
+    background: var(--sp-success-soft);
+    box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--sp-success) 30%, transparent);
+  }
+  &.alert-error,
+  &.alert-danger {
+    background: var(--sp-error-soft);
+    box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--sp-error) 30%, transparent);
+  }
+  &.alert-warning {
+    background: var(--sp-warning-soft);
+    color: var(--sp-warning-text);
+    box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--sp-warning-text) 30%, transparent);
+  }
+}
+
+// Avatars: subtle ring like UAvatar
+img.avatar {
+  box-shadow: 0 0 0 1px var(--sp-border);
+}

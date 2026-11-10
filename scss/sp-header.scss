@@ -1,0 +1,178 @@
+// ---------------------------------------------------------------------------
+// Header — UDashboardNavbar: 56px, flat, hairline bottom border
+// ---------------------------------------------------------------------------
+
+.d-header-wrap {
+  background: var(--sp-surface-0);
+}
+
+.d-header {
+  height: var(--sp-header-height);
+  background: var(--sp-surface-0);
+  box-shadow: none;
+  border-bottom: 1px solid var(--sp-border);
+
+  .contents {
+    gap: 8px;
+  }
+
+  // Logo: frontend-3 uses a 28px mark
+  .title {
+    a,
+    a:visited {
+      color: var(--sp-text-highlighted);
+    }
+    #site-logo {
+      max-height: 28px;
+    }
+    .logo-mobile {
+      max-height: 28px;
+    }
+  }
+
+  // Scrolled-topic title reads like the frontend-3 breadcrumb
+  .extra-info-wrapper {
+    .topic-link {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--sp-text-highlighted);
+      letter-spacing: -0.005em;
+    }
+    .header-title .topic-header-extra {
+      font-size: 12px;
+      color: var(--sp-text-muted);
+    }
+    .header-title .badge-category__wrapper::before {
+      content: "/";
+      color: var(--sp-text-dimmed);
+      margin-right: 6px;
+      font-size: 12px;
+    }
+  }
+
+  // Icon row: ghost square buttons
+  .d-header-icons {
+    gap: 2px;
+    align-items: center;
+
+    .icon {
+      width: 32px;
+      height: 32px;
+      border-radius: var(--sp-radius-md);
+      border: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--sp-text-muted);
+      transition: background-color 150ms, color 150ms;
+
+      .d-icon {
+        color: var(--sp-text-muted);
+        font-size: 16px;
+      }
+      .discourse-no-touch &:hover,
+      &:focus-visible {
+        background: var(--sp-bg-elevated);
+        .d-icon {
+          color: var(--sp-text-highlighted);
+        }
+      }
+    }
+    .active .icon,
+    .header-dropdown-toggle.active .icon {
+      background: var(--sp-bg-elevated);
+      box-shadow: none;
+      border: 0;
+      .d-icon {
+        color: var(--sp-text-highlighted);
+      }
+    }
+    .current-user .icon img.avatar {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  // Unread badges on the avatar
+  .header-dropdown-toggle .badge-notification {
+    top: -2px;
+    right: -4px;
+    box-shadow: 0 0 0 2px var(--sp-surface-0);
+  }
+
+  // Log in / Sign up
+  .header-buttons {
+    gap: 8px;
+    .btn {
+      min-height: 32px;
+    }
+    .sign-up-button {
+      background: var(--sp-primary);
+      color: var(--sp-text-inverted);
+    }
+    .login-button {
+      background: var(--sp-bg);
+      color: var(--sp-text);
+      box-shadow: inset 0 0 0 1px var(--sp-border-accented);
+      .d-icon {
+        color: var(--sp-text-muted);
+      }
+    }
+  }
+
+  // Sidebar toggle: a 32px ghost button with a 16px glyph, so the glyph sits
+  // on the sidebar's icon column below it. Core sizes the icon at 32px and
+  // adds a 13px right margin, which pushed the logo ~25px away.
+  .contents .header-sidebar-toggle {
+    margin: 0;
+  }
+  .contents .header-sidebar-toggle button,
+  .contents .header-sidebar-toggle button.btn-flat {
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    min-height: 32px;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--sp-radius-md);
+    .d-icon {
+      width: 16px;
+      height: 16px;
+      font-size: 16px;
+      margin: 0;
+      color: var(--sp-text-muted);
+    }
+    .discourse-no-touch &:hover {
+      background: var(--sp-bg-elevated);
+      .d-icon {
+        color: var(--sp-text-highlighted);
+      }
+    }
+  }
+}
+
+// "Open Speckle" app button (javascripts/…/speckle-app-button)
+.speckle-app-button-wrapper {
+  display: flex;
+  align-items: center;
+  margin-right: 8px;
+  list-style: none;
+
+  .speckle-app-button {
+    gap: 6px;
+    min-height: 32px;
+    font-size: 13px;
+    font-weight: 500;
+    white-space: nowrap;
+    text-decoration: none;
+
+    svg {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+    }
+  }
+}

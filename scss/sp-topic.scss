@@ -1,0 +1,637 @@
+// ---------------------------------------------------------------------------
+// Topic page — title, post stream, controls, map, timeline, footer
+// ---------------------------------------------------------------------------
+
+#topic-title {
+  margin-bottom: 20px;
+
+  h1,
+  .fancy-title {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: -0.015em;
+    color: var(--sp-text-highlighted);
+  }
+  .topic-category {
+    margin-top: 8px;
+    gap: 6px;
+  }
+  .edit-topic .d-icon {
+    color: var(--sp-text-dimmed);
+  }
+}
+
+// --- Posts -----------------------------------------------------------------
+
+.topic-post {
+  .topic-body {
+    border-top: 1px solid var(--sp-border);
+  }
+  &.selected .topic-body,
+  &.selected article {
+    background: var(--sp-primary-soft);
+  }
+  .topic-avatar {
+    border-top: 1px solid var(--sp-border);
+  }
+  &:first-of-type .topic-body,
+  &:first-of-type .topic-avatar {
+    border-top: 0;
+  }
+}
+
+// Highlighted post after jump
+.topic-post.highlighted .topic-body,
+.topic-post.highlighted .topic-avatar {
+  animation: none;
+  background: var(--sp-primary-soft);
+}
+
+.topic-meta-data {
+  font-size: 13px;
+
+  .names {
+    gap: 6px;
+    .first a,
+    .full-name a,
+    .username a {
+      color: var(--sp-text-highlighted);
+      font-weight: 600;
+    }
+    .second a,
+    .user-title,
+    .user-title a {
+      color: var(--sp-text-muted);
+      font-weight: 400;
+    }
+    .staff a,
+    .moderator a,
+    .admin a {
+      color: var(--sp-text-highlighted);
+    }
+    .d-icon-shield-halved,
+    .d-icon-wrench {
+      color: var(--sp-primary);
+    }
+  }
+  .post-infos {
+    color: var(--sp-text-muted);
+    gap: 8px;
+    .post-date,
+    .post-date a {
+      font-size: 12px;
+      color: var(--sp-text-muted);
+    }
+    .post-info .d-icon {
+      color: var(--sp-text-dimmed);
+    }
+  }
+}
+
+.reply-to-tab {
+  font-size: 12px;
+  color: var(--sp-text-muted);
+}
+
+// Staff/system post notice
+.post-notice {
+  background: var(--sp-surface-1);
+  border: 0;
+  border-radius: var(--sp-radius-md);
+  box-shadow: inset 0 0 0 1px var(--sp-border);
+  color: var(--sp-text-toned);
+  font-size: 13px;
+}
+
+// Whisper
+.topic-post.whisper .cooked {
+  color: var(--sp-text-muted);
+}
+
+// Small actions ("closed", "pinned", etc.)
+.small-action {
+  border-top: 1px solid var(--sp-border);
+  color: var(--sp-text-muted);
+  font-size: 13px;
+
+  .topic-avatar {
+    border-top: 0;
+    .d-icon {
+      color: var(--sp-text-muted);
+      background: var(--sp-bg-elevated);
+      border-radius: 9999px;
+      padding: 6px;
+      box-sizing: content-box;
+    }
+  }
+  .small-action-desc {
+    color: var(--sp-text-muted);
+    a {
+      color: var(--sp-text-toned);
+      font-weight: 500;
+    }
+  }
+}
+
+// Gap / time-gap markers
+.time-gap .topic-avatar,
+.time-gap .small-action-desc {
+  color: var(--sp-text-dimmed);
+  font-size: 12px;
+}
+.gap {
+  background: var(--sp-bg-muted);
+  border-radius: var(--sp-radius-md);
+  color: var(--sp-text-muted);
+  font-size: 13px;
+}
+
+// --- Post controls ---------------------------------------------------------
+
+nav.post-controls {
+  color: var(--sp-text-muted);
+
+  .btn {
+    min-height: 28px;
+    min-width: 28px;
+    padding: 4px 6px;
+    border-radius: var(--sp-radius-md);
+    background: transparent;
+    color: var(--sp-text-muted);
+    box-shadow: none;
+
+    .d-icon {
+      color: var(--sp-text-muted);
+      font-size: 14px;
+    }
+    .discourse-no-touch &:hover {
+      background: var(--sp-bg-elevated);
+      color: var(--sp-text-highlighted);
+      .d-icon {
+        color: var(--sp-text-highlighted);
+      }
+    }
+  }
+
+  .btn.reply.create {
+    color: var(--sp-text-toned);
+    font-weight: 500;
+    .d-icon {
+      color: var(--sp-text-toned);
+    }
+  }
+
+  .btn.toggle-like.has-like,
+  .btn.like.has-like,
+  .double-button .toggle-like.has-like {
+    .d-icon {
+      color: var(--love);
+    }
+  }
+  .discourse-no-touch & .btn.toggle-like:hover .d-icon,
+  .discourse-no-touch & .btn.like:hover .d-icon {
+    color: var(--love);
+  }
+
+  .like-count,
+  .button-count {
+    color: var(--sp-text-muted);
+    font-size: 12px;
+  }
+
+  // Accepted solution (discourse-solved)
+  .accepted,
+  .post-action-menu__solved-accepted {
+    color: var(--sp-success) !important;
+    .d-icon {
+      color: var(--sp-success) !important;
+    }
+  }
+
+  .show-replies,
+  .post-action-menu__show-replies {
+    color: var(--sp-text-toned);
+    font-weight: 500;
+    box-shadow: inset 0 0 0 1px var(--sp-border-accented);
+  }
+}
+
+// Embedded replies / "in reply to"
+.embedded-posts {
+  border: 0;
+  background: var(--sp-surface-1);
+  border-radius: var(--sp-radius-lg);
+  box-shadow: inset 0 0 0 1px var(--sp-border);
+  .topic-body,
+  .topic-avatar {
+    border-top: 0;
+  }
+}
+
+// Who liked / post links
+.who-liked,
+.post-links-container {
+  font-size: 12px;
+  color: var(--sp-text-muted);
+}
+.post-links-container .post-links {
+  border-top: 1px solid var(--sp-border);
+  a {
+    color: var(--sp-text-toned);
+  }
+}
+
+// discourse-solved accepted answer callout on first post
+.accepted-answer {
+  background: var(--sp-success-soft) !important;
+  border-radius: var(--sp-radius-lg);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--sp-success) 30%, transparent);
+  border: 0 !important;
+  .title {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--sp-text);
+    background: transparent !important;
+    border: 0 !important;
+  }
+  blockquote {
+    background: transparent !important;
+  }
+}
+
+// --- Topic map --------------------------------------------------------------
+
+.topic-map {
+  border: 0;
+  border-radius: var(--sp-radius-lg);
+  background: var(--sp-surface-2);
+  box-shadow: var(--sp-shadow-xs), 0 0 0 1px var(--sp-border);
+  font-size: 13px;
+
+  .topic-map__stats .btn,
+  .topic-map__stats .number,
+  .topic-map__stats .topic-map__stat-label {
+    color: var(--sp-text-muted);
+  }
+  .topic-map__stats .number,
+  .topic-map__stats .topic-map__stat-value {
+    color: var(--sp-text-highlighted);
+    font-weight: 600;
+  }
+  .topic-map__contents {
+    border: 0;
+  }
+  .summarization-button,
+  .topic-map__additional-contents {
+    border-top: 1px solid var(--sp-border);
+  }
+}
+
+// --- Timeline ---------------------------------------------------------------
+
+.topic-timeline {
+  font-size: 12px;
+
+  .timeline-scrollarea {
+    border-left: 1px solid var(--sp-border);
+  }
+  .timeline-handle {
+    background: var(--sp-primary);
+    border-radius: 9999px;
+    width: 3px;
+  }
+  .timeline-scroller-content {
+    .timeline-replies {
+      font-weight: 600;
+      color: var(--sp-text-highlighted);
+    }
+    .timeline-ago {
+      color: var(--sp-text-muted);
+    }
+  }
+  .start-date,
+  .now-date {
+    color: var(--sp-text-muted);
+  }
+  .timeline-footer-controls .btn,
+  .timeline-controls .btn {
+    font-size: 12px;
+  }
+}
+
+// --- Footer & more topics --------------------------------------------------
+
+#topic-footer-buttons {
+  border-top: 1px solid var(--sp-border);
+  padding-top: 16px;
+
+  .topic-footer-main-buttons {
+    gap: 8px;
+  }
+  .topic-notifications-button .reason {
+    font-size: 12px;
+    color: var(--sp-text-muted);
+  }
+}
+
+.more-topics__container {
+  border-top: 1px solid var(--sp-border);
+  padding-top: 20px;
+
+  .more-topics__lists .nav-pills {
+    margin-bottom: 12px;
+  }
+  h3,
+  .suggested-topics-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--sp-text-highlighted);
+  }
+  .more-topics__browse-more {
+    font-size: 13px;
+    color: var(--sp-text-muted);
+  }
+}
+
+// Topic progress pill (bottom-right)
+#topic-progress-wrapper #topic-progress {
+  background: var(--sp-surface-2);
+  border: 0;
+  border-radius: var(--sp-radius-md);
+  box-shadow: var(--sp-shadow-md), 0 0 0 1px var(--sp-border);
+  color: var(--sp-text);
+  font-size: 13px;
+  .bg {
+    background: var(--sp-primary-soft);
+  }
+}
+
+// Post selection / multi-select bar
+.selected-posts {
+  background: var(--sp-bg);
+  border-radius: var(--sp-radius-lg);
+  box-shadow: var(--sp-shadow-lg), 0 0 0 1px var(--sp-border);
+}
+
+// Topic map stats: neutral numbers, muted labels
+.topic-map {
+  .number,
+  .topic-map__stats .number,
+  .topic-map__stats button .number {
+    color: var(--sp-text-highlighted) !important;
+    font-weight: 600;
+  }
+  .topic-map__stats .topic-map__stat-label,
+  .topic-map__stats span:not(.number) {
+    color: var(--sp-text-muted);
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Topic map — balanced stat row. Core stacks number over an 11px label with
+// wide gaps, pads the first-post map 56px in while the card spans the
+// avatar column, and draws 26px avatars that outweigh the numbers. Here:
+// the card sits exactly on the post's text column (same edges as code
+// blocks and oneboxes), stats read inline as "259 views", and participants
+// are a 24px overlapping group behind a hairline divider (as in the topic
+// list). Selectors are deliberately one step more specific than core's.
+// ---------------------------------------------------------------------------
+
+.topic-post .topic-map,
+.container.posts .topic-map {
+  padding: 10px 16px;
+  margin-bottom: 16px;
+
+  &.--op {
+    padding: 10px 16px;
+  }
+
+  .topic-map__contents .topic-map__stats {
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+
+    > .btn,
+    .fk-d-menu__trigger {
+      flex-direction: row;
+      align-items: center;
+      gap: 4px;
+      min-height: 28px;
+      min-width: 0;
+      padding: 0 2px;
+      background: transparent;
+      box-shadow: none;
+    }
+
+    .number {
+      font-size: 13px;
+      line-height: 20px;
+      font-weight: 600;
+      color: var(--sp-text-highlighted) !important;
+    }
+    .topic-map__stat-label {
+      font-size: 13px;
+      line-height: 20px;
+      font-weight: 400;
+      color: var(--sp-text-muted);
+    }
+  }
+
+  .topic-map__users-list {
+    gap: 0;
+    padding-left: 16px;
+    border-left: 1px solid var(--sp-border);
+    align-items: center;
+
+    > div,
+    > a {
+      margin-right: -6px;
+    }
+    img.avatar {
+      width: 24px;
+      height: 24px;
+      box-shadow: 0 0 0 2px var(--sp-surface-2);
+    }
+    .post-count,
+    .avatar-flair {
+      display: none;
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Personal messages — read like topic posts. Core boxes every post (bordered
+// for others, blue-tinted for your own, shifted 16px left to fit the tint)
+// and gives the participant panel its own grey slab inside the map card.
+// ---------------------------------------------------------------------------
+
+.archetype-private_message {
+  .topic-post .regular.contents,
+  .topic-post.current-user-post .regular.contents {
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+  }
+
+  .topic-post.current-user-post .topic-body,
+  .topic-post.current-user-post article {
+    background: transparent;
+  }
+
+  // Map: one card, participants under a hairline instead of a nested slab
+  .topic-map {
+    .topic-map__contents,
+    .topic-map__private-message-map {
+      background: transparent;
+      padding: 0;
+    }
+    .topic-map__private-message-map {
+      border-top: 1px solid var(--sp-border);
+      margin-top: 10px;
+      padding-top: 10px;
+    }
+    .participants {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 10px;
+
+      .user {
+        display: inline-flex;
+        align-items: center;
+        background: var(--sp-bg);
+        box-shadow: inset 0 0 0 1px var(--sp-border-accented);
+        border-radius: 9999px;
+        padding: 2px 10px 2px 2px;
+        margin: 0;
+        font-size: 13px;
+
+        .user-link {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          color: var(--sp-text);
+        }
+        img.avatar {
+          width: 22px;
+          height: 22px;
+          box-shadow: none;
+        }
+        .username {
+          font-weight: 500;
+          color: var(--sp-text-highlighted);
+        }
+        .remove-invited {
+          margin-left: 2px;
+          min-height: 20px;
+          min-width: 20px;
+          padding: 0;
+        }
+      }
+    }
+    .controls .btn {
+      min-height: 28px;
+      padding: 4px 10px;
+      font-size: 12px;
+    }
+  }
+}
+
+// Post notices (first post, returning user, custom) — quiet surface-1 note,
+// same in topics and messages
+.post-notice,
+.post-notice.new-user,
+.post-notice.returning-user,
+.post-notice.custom {
+  background: var(--sp-surface-1);
+  border: 0;
+  border-radius: var(--sp-radius-md);
+  box-shadow: inset 0 0 0 1px var(--sp-border);
+  color: var(--sp-text-toned);
+  font-size: 13px;
+  padding: 10px 16px;
+  gap: 12px;
+
+  .d-icon,
+  svg {
+    color: var(--sp-text-muted);
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Post controls — one 32px row. Core pads action buttons to 36px, while the
+// reactions plugin's like button is 31px with a 15px counter on its own line
+// height, so hearts and counts sat ~3px above link / more / reply.
+// ---------------------------------------------------------------------------
+
+nav.post-controls {
+  align-items: center;
+
+  .actions {
+    align-items: center;
+    gap: 2px;
+  }
+
+  .actions .btn,
+  .actions button,
+  .discourse-reactions-reaction-button,
+  .double-button button {
+    height: 32px;
+    min-height: 32px;
+    min-width: 32px;
+    padding: 0 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    line-height: 1;
+    vertical-align: middle;
+
+    .d-icon {
+      margin: 0;
+      vertical-align: middle;
+    }
+  }
+
+  .actions .btn.reply .d-button-label,
+  .actions .btn .d-button-label {
+    font-size: 13px;
+    line-height: 1;
+  }
+
+  // Reactions plugin: centre the whole block and its counter on the row
+  .discourse-reactions-actions,
+  .discourse-reactions-counter,
+  .discourse-reactions-list,
+  .discourse-reactions-list .reactions,
+  .double-button {
+    display: inline-flex;
+    align-items: center;
+    height: 32px;
+  }
+
+  .reactions-counter,
+  .like-count,
+  .button-count {
+    display: inline-flex;
+    align-items: center;
+    height: 32px;
+    font-size: 13px;
+    line-height: 1;
+    color: var(--sp-text-muted);
+    padding: 0 2px 0 6px;
+  }
+
+  .discourse-reactions-list .reactions .reaction img,
+  .discourse-reactions-list .reactions .reaction .emoji {
+    width: 16px;
+    height: 16px;
+  }
+}

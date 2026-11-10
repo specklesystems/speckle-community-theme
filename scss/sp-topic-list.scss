@@ -1,0 +1,227 @@
+// ---------------------------------------------------------------------------
+// Topic list — UTable inside a surface-2 card (ring + shadow-xs, rounded-lg)
+// ---------------------------------------------------------------------------
+
+.topic-list {
+  border-collapse: separate;
+  border-spacing: 0;
+  background: var(--sp-surface-2);
+  border-radius: var(--sp-radius-lg);
+  box-shadow: var(--sp-shadow-xs), 0 0 0 1px var(--sp-border);
+  overflow: hidden;
+  margin-bottom: 16px;
+
+  // Header row — Elements-table style: muted bg, 12px muted labels
+  .topic-list-header {
+    background: var(--sp-surface-1);
+
+    th {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--sp-text-muted);
+      padding: 10px 16px;
+      border-bottom: 1px solid var(--sp-border);
+      text-transform: none;
+      letter-spacing: 0;
+
+      &.sortable:hover,
+      .discourse-no-touch &.sortable:hover {
+        background: var(--sp-bg-elevated);
+        color: var(--sp-text-highlighted);
+      }
+      .d-icon {
+        color: var(--sp-text-dimmed);
+      }
+      button {
+        color: inherit;
+        font: inherit;
+      }
+    }
+  }
+
+  // Rows
+  .topic-list-item {
+    background: transparent;
+    border-bottom: 0;
+    transition: background-color 150ms;
+
+    > td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--sp-border);
+      vertical-align: middle;
+    }
+    &:last-of-type > td {
+      border-bottom: 0;
+    }
+
+    .discourse-no-touch &:hover {
+      background: var(--sp-row-hover);
+    }
+
+    &.selected,
+    &.highlighted {
+      background: var(--sp-primary-soft);
+    }
+    &.visited .main-link .title {
+      color: var(--sp-text-toned);
+      font-weight: 500;
+    }
+    &.pinned .main-link .title,
+    &.unseen-topic .main-link .title {
+      font-weight: 600;
+    }
+  }
+
+  .main-link {
+    .title,
+    a.title {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--sp-text-highlighted);
+      letter-spacing: -0.005em;
+      padding: 0;
+    }
+    .link-top-line {
+      line-height: 1.4;
+    }
+    .link-bottom-line {
+      margin-top: 6px;
+      gap: 6px;
+      font-size: 12px;
+    }
+    .topic-statuses .d-icon {
+      color: var(--sp-text-muted);
+    }
+    .topic-statuses .pinned .d-icon {
+      color: var(--sp-primary);
+    }
+    .topic-post-badges .badge-notification.new-topic {
+      background: var(--sp-primary);
+    }
+  }
+
+  .topic-excerpt {
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--sp-text-muted);
+    margin-top: 4px;
+    .topic-excerpt-more,
+    a {
+      color: var(--sp-primary);
+    }
+  }
+
+  // Posters — UAvatarGroup: overlapping 24px with a bg ring
+  .posters {
+    > a {
+      margin-right: -6px;
+      &:last-of-type {
+        margin-right: 0;
+      }
+    }
+    img.avatar {
+      width: 24px;
+      height: 24px;
+      box-shadow: 0 0 0 2px var(--sp-surface-2);
+    }
+    > a.latest img.avatar {
+      box-shadow: 0 0 0 2px var(--sp-surface-2), 0 0 0 3px var(--sp-primary-ring);
+    }
+  }
+
+  // Numeric columns
+  .num,
+  .activity,
+  .age {
+    font-size: 13px;
+    color: var(--sp-text-muted);
+    font-variant-numeric: tabular-nums;
+
+    a,
+    a span,
+    .number {
+      color: var(--sp-text-muted);
+    }
+  }
+  .num.posts-map .number,
+  .num.views .number {
+    color: var(--sp-text-toned);
+    font-weight: 500;
+  }
+  .heatmap-high,
+  .heatmap-high a,
+  .heatmap-med,
+  .heatmap-med a,
+  .heatmap-low,
+  .heatmap-low a {
+    color: var(--sp-warning-text) !important;
+  }
+
+  // Bulk select
+  td.bulk-select,
+  th.bulk-select {
+    padding-left: 16px;
+  }
+}
+
+// Inline "new/unread" topic indicator line
+.topic-list .topic-list-item-separator {
+  td {
+    border-bottom: 1px solid var(--sp-primary);
+    padding: 0;
+    span {
+      background: var(--sp-surface-2);
+      color: var(--sp-primary);
+      font-size: 11px;
+      font-weight: 600;
+    }
+  }
+}
+
+// "See N new topics" banner
+.show-more .alert.alert-info.clickable {
+  border-radius: var(--sp-radius-md);
+  text-align: center;
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+// Latest-topic-list on categories page and other compact lists
+.latest-topic-list,
+.top-topic-list {
+  .latest-topic-list-item,
+  .top-topic-list-item {
+    border-bottom: 1px solid var(--sp-border);
+    padding: 10px 16px;
+    .discourse-no-touch &:hover {
+      background: var(--sp-row-hover);
+    }
+    .title {
+      color: var(--sp-text-highlighted);
+      font-weight: 500;
+    }
+  }
+}
+
+// Visited titles: Discourse dims to primary-medium; keep them readable
+.topic-list .topic-list-item .main-link a.title.visited,
+.topic-list .topic-list-item.visited .main-link a.title,
+.topic-list .topic-list-item .main-link a.title:visited {
+  color: var(--sp-text-toned);
+}
+
+// "Last visit" divider in primary, not danger
+.topic-list .topic-list-item-separator {
+  .topic-list-data {
+    border-top: 1px solid var(--sp-primary-ring);
+    border-bottom: 0;
+    padding: 0;
+    span {
+      background: var(--sp-surface-2);
+      color: var(--sp-primary);
+      font-size: 11px;
+      font-weight: 600;
+      padding: 0 6px;
+    }
+  }
+}

@@ -1,0 +1,373 @@
+// ---------------------------------------------------------------------------
+// Post content. Chrome is 13–14px like frontend-3; long-form reading gets
+// 16px / 1.65 so threads stay comfortable.
+// ---------------------------------------------------------------------------
+
+.cooked,
+.d-editor-preview {
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--sp-text);
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: var(--sp-text-highlighted);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin: 1.25em 0 0.5em;
+  }
+  h1 {
+    font-size: 1.4em;
+  }
+  h2 {
+    font-size: 1.25em;
+  }
+  h3 {
+    font-size: 1.1em;
+  }
+  h4,
+  h5,
+  h6 {
+    font-size: 1em;
+  }
+
+  a {
+    color: var(--sp-primary);
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+  }
+
+  strong {
+    color: var(--sp-text-highlighted);
+    font-weight: 600;
+  }
+
+  // Inline code — UKbd-ish chip
+  code {
+    font-family: var(--d-font-family--monospace);
+    font-size: 0.85em;
+    color: var(--sp-text-highlighted);
+    background: var(--sp-bg-elevated);
+    border-radius: var(--sp-radius-sm);
+    padding: 0.125em 0.375em;
+  }
+
+  // Code blocks — bordered card
+  pre {
+    background: var(--sp-code-bg);
+    border-radius: var(--sp-radius-md);
+    box-shadow: inset 0 0 0 1px var(--sp-border);
+    margin: 1em 0;
+
+    code {
+      background: transparent;
+      color: var(--sp-text);
+      font-size: 13px;
+      line-height: 1.6;
+      padding: 14px 16px;
+      border-radius: var(--sp-radius-md);
+      max-height: 512px;
+    }
+  }
+  .codeblock-buttons .btn {
+    background: var(--sp-bg);
+    box-shadow: inset 0 0 0 1px var(--sp-border);
+    min-height: 28px;
+    min-width: 28px;
+    .d-icon {
+      color: var(--sp-text-muted);
+    }
+  }
+
+  // Blockquote — left rule, toned text
+  blockquote {
+    background: transparent;
+    border-left: 2px solid var(--sp-border-accented);
+    color: var(--sp-text-toned);
+    padding: 2px 0 2px 16px;
+    margin: 1em 0;
+  }
+
+  // Quoted posts — bordered card with header strip
+  aside.quote {
+    border-radius: var(--sp-radius-md);
+    box-shadow: inset 0 0 0 1px var(--sp-border);
+    overflow: hidden;
+    margin: 1em 0;
+
+    .title {
+      background: var(--sp-surface-1);
+      border-left: 0;
+      border-bottom: 1px solid var(--sp-border);
+      font-size: 12px;
+      color: var(--sp-text-muted);
+      padding: 8px 12px;
+      .quote-controls .d-icon {
+        color: var(--sp-text-dimmed);
+      }
+      img.avatar {
+        width: 18px;
+        height: 18px;
+      }
+    }
+    blockquote {
+      border-left: 0;
+      background: transparent;
+      padding: 10px 12px;
+      margin: 0;
+      color: var(--sp-text);
+    }
+  }
+
+  // Oneboxes — UPageCard
+  aside.onebox {
+    border: 0;
+    border-radius: var(--sp-radius-lg);
+    background: var(--sp-surface-2);
+    box-shadow: var(--sp-shadow-xs), 0 0 0 1px var(--sp-border);
+    padding: 14px 16px;
+    font-size: 13px;
+
+    .source {
+      font-size: 12px;
+      color: var(--sp-text-muted);
+      a {
+        color: var(--sp-text-muted);
+      }
+    }
+    .onebox-body h3,
+    .onebox-body h4 {
+      font-size: 14px;
+      margin-top: 4px;
+    }
+    .onebox-body p {
+      color: var(--sp-text-muted);
+    }
+    img {
+      border-radius: var(--sp-radius-md);
+    }
+  }
+
+  // Inline onebox / mentions / hashtags
+  a.mention,
+  .mention {
+    background: var(--sp-primary-soft);
+    color: var(--sp-primary);
+    border-radius: var(--sp-radius-sm);
+    padding: 0.0625em 0.3em;
+    font-weight: 500;
+    font-size: 0.93em;
+  }
+  a.mention-group {
+    background: var(--sp-bg-elevated);
+    color: var(--sp-text-highlighted);
+    border-radius: var(--sp-radius-sm);
+  }
+  .hashtag-cooked {
+    background: var(--sp-bg-elevated);
+    box-shadow: inset 0 0 0 1px var(--sp-border);
+    border-radius: var(--sp-radius-sm);
+    color: var(--sp-text-toned);
+    padding: 0.0625em 0.3em;
+    font-size: 0.93em;
+  }
+
+  // Tables — UTable
+  .md-table {
+    margin: 1em 0;
+    overflow-x: auto;
+    border-radius: var(--sp-radius-md);
+    box-shadow: inset 0 0 0 1px var(--sp-border);
+  }
+  table {
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 13px;
+    width: 100%;
+
+    th {
+      background: var(--sp-surface-1);
+      color: var(--sp-text-highlighted);
+      font-weight: 600;
+      text-align: left;
+      padding: 8px 12px;
+      border-bottom: 1px solid var(--sp-border);
+    }
+    td {
+      padding: 8px 12px;
+      border-bottom: 1px solid var(--sp-border);
+      border-top: 0;
+    }
+    tr:last-child td {
+      border-bottom: 0;
+    }
+    tbody {
+      border-top: 0;
+    }
+  }
+
+  // Details / spoilers — UCollapsible card
+  details {
+    background: var(--sp-bg);
+    border-radius: var(--sp-radius-md);
+    box-shadow: inset 0 0 0 1px var(--sp-border);
+    padding: 8px 12px;
+    margin: 1em 0;
+
+    summary {
+      font-weight: 500;
+      color: var(--sp-text-highlighted);
+      cursor: pointer;
+    }
+    &[open] summary {
+      margin-bottom: 8px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--sp-border);
+    }
+  }
+
+  // Images
+  img:not(.emoji):not(.avatar):not(.site-icon) {
+    border-radius: var(--sp-radius-md);
+  }
+  .lightbox-wrapper .meta {
+    background: var(--sp-bg-inverted);
+    color: var(--sp-text-inverted);
+    border-radius: 0 0 var(--sp-radius-md) var(--sp-radius-md);
+    font-size: 12px;
+  }
+
+  hr {
+    border: 0;
+    border-top: 1px solid var(--sp-border);
+    margin: 1.5em 0;
+  }
+
+  // Polls
+  .poll {
+    border-radius: var(--sp-radius-lg);
+    box-shadow: inset 0 0 0 1px var(--sp-border);
+    border: 0;
+    .poll-info {
+      color: var(--sp-text-muted);
+    }
+    .results .bar {
+      background: var(--sp-primary);
+      border-radius: 9999px;
+    }
+    .results .bar-back {
+      background: var(--sp-bg-elevated);
+      border-radius: 9999px;
+    }
+  }
+
+  // Keyboard keys
+  kbd {
+    font-family: var(--d-font-family--monospace);
+    font-size: 0.8em;
+    background: var(--sp-bg);
+    border: 0;
+    border-radius: var(--sp-radius-sm);
+    box-shadow: inset 0 0 0 1px var(--sp-border-accented), inset 0 -1px 0 var(--sp-border-accented);
+    color: var(--sp-text-highlighted);
+    padding: 0.0625em 0.375em;
+  }
+}
+
+// highlight.js — calm, frontend-3-ish syntax colours
+.hljs {
+  color: var(--sp-text);
+  background: transparent;
+}
+.hljs-comment,
+.hljs-quote {
+  color: var(--sp-text-dimmed);
+  font-style: italic;
+}
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-built_in,
+.hljs-type {
+  color: var(--sp-primary);
+}
+.hljs-string,
+.hljs-attr,
+.hljs-template-tag {
+  color: var(--sp-success);
+}
+.hljs-number,
+.hljs-literal,
+.hljs-symbol {
+  color: var(--sp-warning-text);
+}
+.hljs-title,
+.hljs-section,
+.hljs-function .hljs-title {
+  color: var(--sp-text-highlighted);
+  font-weight: 600;
+}
+.hljs-variable,
+.hljs-params {
+  color: var(--sp-text-toned);
+}
+.hljs-meta,
+.hljs-tag {
+  color: var(--sp-text-muted);
+}
+
+// ---------------------------------------------------------------------------
+// Always-visible scrollbars on scrollable post content (code, wide tables).
+// html sets the standard scrollbar-color, which inherits and makes Chrome
+// ignore ::-webkit-scrollbar — so macOS falls back to auto-hiding overlay
+// bars and clipped code looks like it simply ends. Resetting to auto here
+// re-enables the custom (persistent) bar in Chrome/Edge/Safari.
+// ---------------------------------------------------------------------------
+
+.cooked pre code,
+.d-editor-preview pre code,
+.cooked .md-table,
+.d-editor-preview .md-table {
+  overflow: auto;
+  scrollbar-color: auto;
+  scrollbar-width: auto;
+
+  &::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    background: transparent;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: var(--sp-scroll-thumb);
+    border-radius: 9999px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background: var(--sp-scroll-thumb-hover);
+    background-clip: padding-box;
+  }
+  &::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+}
+
+// Firefox can't force a persistent bar (it follows the OS setting), so give
+// it a visible thin bar where it does render.
+@supports (-moz-appearance: none) {
+  .cooked pre code,
+  .d-editor-preview pre code,
+  .cooked .md-table {
+    scrollbar-width: thin;
+    scrollbar-color: var(--sp-scroll-thumb) transparent;
+  }
+}

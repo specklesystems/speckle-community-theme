@@ -1,0 +1,189 @@
+// ---------------------------------------------------------------------------
+// Sidebar — UDashboardSidebar + UNavigationMenu (vertical)
+// surface-1 background, right hairline, 32px rows, rounded-md items inset 8px
+// ---------------------------------------------------------------------------
+
+:root {
+  --d-sidebar-width: 240px;
+  --d-sidebar-row-height: 32px;
+  --d-sidebar-row-horizontal-padding: 10px;
+  --d-sidebar-section-link-icon-size: 14px;
+  --d-sidebar-section-link-prefix-width: 16px;
+  --d-sidebar-section-link-prefix-margin-right: 8px;
+
+  --d-sidebar-background: var(--sp-surface-1);
+  --d-sidebar-border-color: var(--sp-border);
+  --d-sidebar-header-color: var(--sp-text-muted);
+  --d-sidebar-header-icon-color: var(--sp-text-dimmed);
+  --d-sidebar-link-color: var(--sp-text-toned);
+  --d-sidebar-link-icon-color: var(--sp-text-muted);
+  --d-sidebar-link-badge-color: var(--sp-text-muted);
+  --d-sidebar-prefix-background: var(--sp-bg-elevated);
+  --d-sidebar-prefix-color: var(--sp-text-muted);
+  --d-sidebar-suffix-color: var(--sp-primary);
+  --d-sidebar-highlight-background: var(--sp-row-hover);
+  --d-sidebar-highlight-color: var(--sp-text-highlighted);
+  --d-sidebar-highlight-hover-background: var(--sp-row-hover);
+  --d-sidebar-highlight-hover-icon: var(--sp-text-highlighted);
+  --d-sidebar-highlight-prefix-background: var(--sp-bg-accented);
+  --d-sidebar-highlight-prefix-color: var(--sp-text-highlighted);
+  --d-sidebar-highlight-suffix-color: var(--sp-primary);
+  --d-sidebar-active-background: var(--sp-bg-elevated);
+  --d-sidebar-active-color: var(--sp-text-highlighted);
+  --d-sidebar-active-icon-color: var(--sp-text-highlighted);
+  --d-sidebar-active-prefix-background: var(--sp-bg-accented);
+  --d-sidebar-active-suffix-color: var(--sp-primary);
+  --d-sidebar-admin-background: var(--sp-surface-1);
+  --d-sidebar-footer-fade: linear-gradient(
+    to bottom,
+    transparent,
+    var(--sp-surface-1)
+  );
+}
+
+.sidebar-wrapper {
+  background: var(--sp-surface-1);
+  border-right: 1px solid var(--sp-border);
+}
+
+// One hairline only: the wrapper's border (it lines up with the header's
+// gradient hairline). Core also borders the inner container 1px further in,
+// which doubles the line, so that one goes.
+.sidebar-container,
+.sidebar-wrapper #d-sidebar.sidebar-container {
+  background: transparent;
+  border-right: 0;
+  padding-top: 8px;
+}
+
+.sidebar-sections {
+  padding: 0 8px 8px;
+  gap: 8px;
+}
+
+.sidebar-section-wrapper {
+  border-bottom: 0;
+  padding-bottom: 4px;
+  margin-bottom: 0;
+}
+
+// Section heading — UNavigationMenu label
+.sidebar-section-header-wrapper {
+  padding: 0 2px;
+  .sidebar-section-header {
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: none;
+    letter-spacing: 0;
+    color: var(--sp-text-muted);
+    padding: 6px 8px;
+    border-radius: var(--sp-radius-md);
+
+    .sidebar-section-header-text {
+      font-size: 12px;
+      font-weight: 500;
+      text-transform: none;
+      letter-spacing: 0;
+    }
+    .sidebar-section-header-caret .d-icon {
+      color: var(--sp-text-dimmed);
+    }
+    .discourse-no-touch &:hover {
+      background: var(--sp-row-hover);
+      color: var(--sp-text-highlighted);
+    }
+  }
+  .sidebar-section-header-button {
+    border-radius: var(--sp-radius-md);
+    .d-icon {
+      color: var(--sp-text-dimmed);
+    }
+    .discourse-no-touch &:hover {
+      background: var(--sp-bg-elevated);
+    }
+  }
+}
+
+// Rows
+.sidebar-section-link-wrapper {
+  .sidebar-section-link {
+    font-size: 13px;
+    font-weight: 500;
+    border-radius: var(--sp-radius-md);
+    transition: background-color 150ms, color 150ms;
+
+    .sidebar-section-link-content-text {
+      font-size: 13px;
+    }
+
+    .sidebar-section-link-prefix {
+      &.icon,
+      &.emoji {
+        background: transparent;
+      }
+      &.span .prefix-span {
+        border-radius: 2px;
+        width: 10px;
+        height: 10px;
+      }
+    }
+
+    .sidebar-section-link-suffix.unread,
+    .sidebar-section-link-suffix.icon.urgent {
+      color: var(--sp-primary);
+    }
+
+    .sidebar-section-link-content-badge {
+      font-size: 11px;
+      color: var(--sp-text-muted);
+      font-variant-numeric: tabular-nums;
+    }
+
+    &.active {
+      font-weight: 500;
+    }
+  }
+}
+
+// "More" toggle and secondary links
+.sidebar-more-section-links-details-summary,
+.sidebar-more-section-trigger {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--sp-text-muted);
+  border-radius: var(--sp-radius-md);
+}
+
+.sidebar-more-section-links-details-content,
+.sidebar-more-section-content {
+  background: var(--sp-bg);
+  border: 1px solid var(--sp-border);
+  border-radius: var(--sp-radius-md);
+  box-shadow: var(--sp-shadow-lg);
+  padding: 4px;
+}
+
+// Footer — LayoutSidebarFooter
+.sidebar-footer-wrapper {
+  background: var(--sp-surface-1);
+
+  .sidebar-footer-container {
+    border-top: 1px solid var(--sp-border);
+    padding: 8px;
+    &::before {
+      display: none;
+    }
+  }
+  .btn-flat {
+    min-height: 28px;
+    min-width: 28px;
+  }
+}
+
+// Mobile/hamburger dropdown sidebar
+.sidebar-hamburger-dropdown {
+  .panel-body,
+  .menu-panel {
+    background: var(--sp-surface-1);
+  }
+}
