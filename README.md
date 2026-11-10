@@ -3,7 +3,7 @@
 Discourse theme for speckle.community that matches frontend-3 (speckle-server-internal/packages/frontend-3):
 Inter, Nuxt UI tokens (neutral: zinc, primary: blue), flat dashboard chrome.
 
-Installed on the forum as theme **#11 "Speckle"** — site default since 10 Nov 2026 (previously Air, #3).
+Installed on the forum as theme **#12 "Speckle"**, from this repo (`main`). Site default since 10 Nov 2026.
 
 ## Layout
 
@@ -25,15 +25,18 @@ The search-banner component shows on discovery pages only.
 
 ## Update the live theme
 
-1. `./build.sh` → `.dist/speckle-theme.zip`
-2. Admin → Customize → Themes → Speckle → … → update from the zip, or POST it to `/admin/themes/import.json` with `bundle` + `theme_id=11`.
+1. Commit and push to `main`.
+2. Admin → Customize → Themes → Speckle → **Check for updates** → **Update**.
+
+Discourse checks for updates periodically but never applies them on its own, so step 2 is the deploy.
+`./build.sh` still produces `.dist/speckle-theme.zip` for an emergency manual upload.
 
 ## Live configuration (10 Nov 2026)
 
-- Default theme: Speckle (#11). Air (#3) is still installed; rollback = Admin → Themes → Air → set as default.
-- Site setting `default_dark_mode_color_scheme_id` = Speckle Dark (#6), previously core "Dark" (#2).
-- Light scheme: Speckle Light (#5), set on the theme.
-- Components on the theme: Clickable Topic, search banner, speckle-banner, speckle-stylings. Modern Category + Group Boxes is not attached (fights the card styling).
+- Default theme: **Speckle (#12)**, installed from this repo. Components: Clickable Topic, search banner, speckle-banner, speckle-stylings.
+- Colour schemes from `about.json`: Speckle Light (#7) on the theme; Speckle Dark (#8) via site setting `default_dark_mode_color_scheme_id`.
+- Rollback options: **Speckle (zip build, rollback) (#11)**, the pre-git copy with schemes #5/#6; or **Air (#3)**, the original theme (dark scheme was core "Dark", #2).
+- Modern Category + Group Boxes is not attached (fights the card styling).
 
 ## Branding images (10 Nov 2026)
 
