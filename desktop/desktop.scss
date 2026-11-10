@@ -85,3 +85,68 @@ body.speckle-full-bleed.has-sidebar-page .d-header .contents > .home-logo-wrappe
   max-width: var(--topic-body-width);
   box-sizing: border-box;
 }
+
+// ---------------------------------------------------------------------------
+// Desktop view on a phone-width screen (iOS "Request Desktop Website", the
+// forum's desktop toggle, or a very narrow window). The desktop composer
+// shows an editor + preview side by side and puts Reply at the bottom edge,
+// exactly where Safari's toolbar, the home indicator and the keyboard sit,
+// so Reply was unreachable. Here: Reply/Close sit directly under the
+// "replying to" line, the preview is hidden, and the composer stays inside
+// the visible viewport and the safe area.
+// ---------------------------------------------------------------------------
+
+@media (max-width: 767px) {
+  #reply-control {
+    max-height: calc(100dvh - var(--header-offset, 56px));
+    padding-bottom: env(safe-area-inset-bottom);
+
+    .reply-area {
+      display: flex;
+      flex-direction: column;
+      padding: 8px 12px;
+
+      > .reply-to {
+        order: 0;
+      }
+      > .submit-panel {
+        order: 1;
+        flex: 0 0 auto;
+        margin: 4px 0 10px;
+      }
+      > .wmd-controls {
+        order: 2;
+        flex: 1 1 auto;
+        min-height: 0;
+      }
+    }
+
+    .d-editor-preview-wrapper {
+      display: none !important;
+    }
+    .d-editor-textarea-wrapper {
+      flex: 1 1 auto;
+      width: 100%;
+      max-width: 100%;
+    }
+  }
+
+  // Text-column alignment rules above assume the 690px desktop column
+  .topic-post .topic-map.--op,
+  .container.posts .topic-map.--op,
+  .topic-post .post-notice {
+    margin-left: 0;
+    width: auto;
+    max-width: 100%;
+  }
+
+  // Header: app button collapses to the cube, as in mobile view
+  .speckle-app-button-wrapper .speckle-app-button {
+    padding: 0;
+    width: 32px;
+    justify-content: center;
+    span {
+      display: none;
+    }
+  }
+}
