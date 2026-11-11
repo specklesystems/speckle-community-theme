@@ -11,7 +11,7 @@ Installed on the forum as theme **#12 "Speckle"**, from this repo (`main`). Site
 | --- | --- |
 | `common/color_definitions.scss` | `--sp-*` tokens, light/dark via `dark-light-choose` (per colour scheme) |
 | `about.json` | Speckle Light / Speckle Dark colour schemes |
-| `scss/` | One `sp-`prefixed partial per surface: base, controls, header, sidebar, layout, topic-list, categories, topic, cooked, composer, overlays, user, admin |
+| `scss/` | One `sp-`prefixed partial per surface: base, controls, header, sidebar, layout, topic-list, categories, topic, cooked, composer, overlays, user, admin, responsive |
 | `javascripts/` | Header "Open Speckle" button, `speckle-full-bleed` body class |
 | `settings.yml` | App button label/URL, full-bleed layout toggle |
 
@@ -21,6 +21,8 @@ Two size systems: UI chrome is px at frontend-3 sizes, so it holds steady whatev
 
 Light and dark are the same rules: every colour is a `--sp-*` token resolved per scheme in `color_definitions.scss`, mirroring frontend-3's light/dark values (zinc-900 page, darker sidebar, blue-400 primary with dark text in dark).
 The search-banner component shows on discovery pages only.
+
+Phones are handled responsively rather than by Discourse's mobile/desktop view, because that view comes from the user agent and iPads or "Request Desktop Website" get desktop view on a phone-sized screen. `sp-responsive.scss` keys layout on width (≤767px) and touch sizing on `pointer: coarse` (44px post controls, 16px fields so iOS doesn't zoom); at narrow widths desktop view restacks the topic list the way mobile view does.
 
 ## Update the live theme
 

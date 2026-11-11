@@ -1,0 +1,95 @@
+// ---------------------------------------------------------------------------
+// Responsive layer — applies in Discourse's desktop view and mobile view alike.
+//
+// Discourse picks its view from the user agent, and that is unreliable: iPads
+// identify as Macs, iOS "Request Desktop Website" and old home-screen web apps
+// keep a desktop identity, and desktop windows can be phone-narrow. So the
+// theme never assumes the view matches the device:
+//   - layout keys on viewport width   (max-width: 767px)
+//   - target size keys on the input   (pointer: coarse)
+// Rules that only make sense against one view's markup live in desktop.scss /
+// mobile.scss, inside the same media queries.
+// ---------------------------------------------------------------------------
+
+// --- Touch input -----------------------------------------------------------
+
+@media (pointer: coarse) {
+  // iOS Safari zooms the page into any focused field under 16px
+  input[type="text"],
+  input[type="search"],
+  input[type="email"],
+  input[type="password"],
+  input[type="number"],
+  input[type="url"],
+  input:not([type]),
+  textarea,
+  .d-editor-input,
+  .select-kit .filter-input {
+    font-size: 16px;
+  }
+
+  // Post controls are hit constantly: 44px (Apple HIG minimum)
+  nav.post-controls {
+    .actions .btn,
+    .actions button,
+    .discourse-reactions-reaction-button,
+    .double-button button {
+      height: 44px;
+      min-height: 44px;
+      min-width: 44px;
+    }
+    .discourse-reactions-actions,
+    .discourse-reactions-counter,
+    .discourse-reactions-list,
+    .discourse-reactions-list .reactions,
+    .double-button {
+      height: 44px;
+    }
+  }
+
+  // Header icons: 40px squares (the 56px header can't fit five 44s at 375px)
+  .d-header .d-header-icons .icon,
+  .d-header .contents .header-sidebar-toggle button,
+  .d-header .contents .header-sidebar-toggle button.btn-flat {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    min-height: 40px;
+  }
+  .d-header .speckle-app-button-wrapper .speckle-app-button {
+    height: 40px;
+    min-width: 40px;
+  }
+}
+
+// --- Narrow viewports ------------------------------------------------------
+
+@media (max-width: 767px) {
+  // Search banner: page-header scale is still a quarter of a phone screen.
+  // Keep the title and the search field, drop the subtitle.
+  .custom-search-banner {
+    .custom-search-banner-wrap {
+      padding: 0 0 16px;
+    }
+    h1 {
+      font-size: 1.375rem;
+      margin-bottom: 12px;
+    }
+    p {
+      display: none;
+    }
+  }
+
+  // Notched phones in landscape: keep header content out of the cutout
+  .d-header-wrap .d-header > .wrap {
+    padding-left: max(12px, env(safe-area-inset-left));
+    padding-right: max(12px, env(safe-area-inset-right));
+  }
+}
+
+// Installed home-screen web app: no browser chrome below the page
+@media (display-mode: standalone) {
+  #main-outlet-wrapper {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
