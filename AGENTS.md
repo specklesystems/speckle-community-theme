@@ -8,7 +8,7 @@ Live configuration, theme IDs, deploy steps, rollback and branding images: `READ
 
 - **Tokens.** Every colour is a `--sp-*` token from `common/color_definitions.scss`, resolved per colour scheme with `dark-light-choose`. A new colour is a new token with light and dark values taken from frontend-3. Light and dark are equivalent: each change lands in both.
 - **Surfaces.** Page and main header `--sp-surface-0`; sidebar, and the header strip above it, `--sp-surface-1`; cards `--sp-surface-2`; card and table header rows `--sp-surface-1`. One 1px `--sp-border` hairline per edge.
-- **Scale.** px matched to frontend-3 at a 16px root. Controls 32px tall with 13px text; chrome 13–14px; post body and composer textarea 16px. Radii: sm 4, md 6, lg 8.
+- **Scale.** Copy (post body, topic titles, excerpts, descriptions, sidebar links, notifications, search results) is in rem on Discourse's own text-size scale, so the reader's Text size preference reaches it; at Normal it reads ~10% larger than frontend-3. UI chrome (buttons, inputs, tabs, tags, counts, metadata) is in px at frontend-3 sizes: controls 32px tall with 13px text. Radii: sm 4, md 6, lg 8.
 - **Controls** mirror Nuxt UI variants: solid primary, outline neutral (`.btn-default`), ghost (`.btn-flat`). `.nav-pills` is a segmented control at its natural width.
 - **One centre line.** Every row of controls (list controls, post controls, topic map, profile stats strip) centres all its children on one line at one height.
 - **Shared column.** Cards inside a post (topic map, post notices, code blocks, oneboxes) take the post text column's edges.

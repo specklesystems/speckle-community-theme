@@ -17,8 +17,7 @@ Installed on the forum as theme **#12 "Speckle"**, from this repo (`main`). Site
 
 Partials must keep the `sp-` prefix: Discourse resolves theme `@import`s against core stylesheets too, so `@import "admin"` silently pulled in core's admin CSS (~1,200 duplicate rules) instead of ours.
 
-Sizes are px, not rem: frontend-3 is rem at a 16px root, Discourse's root follows the reader's text-size preference.
-Chrome is 13–14px like frontend-3; post bodies and the composer textarea are 16px for long-form reading.
+Two size systems: UI chrome is px at frontend-3 sizes, so it holds steady whatever the reader's text-size preference; copy is rem on Discourse's own text-size scale (Normal = 16px root), so readers can enlarge it. At Normal, copy reads ~10% larger than frontend-3 (forum feedback, Nov 2026): topic titles 16px, excerpts and descriptions 14px, post body 16px.
 
 Light and dark are the same rules: every colour is a `--sp-*` token resolved per scheme in `color_definitions.scss`, mirroring frontend-3's light/dark values (zinc-900 page, darker sidebar, blue-400 primary with dark text in dark).
 The search-banner component shows on discovery pages only.

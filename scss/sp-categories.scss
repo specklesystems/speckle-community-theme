@@ -27,13 +27,13 @@
     }
     h3,
     .category-box-heading h3 {
-      font-size: 14px;
+      font-size: 0.9375rem;
       font-weight: 600;
       color: var(--sp-text-highlighted);
     }
     .description,
     .category-description {
-      font-size: 13px;
+      font-size: 0.875rem;
       color: var(--sp-text-muted);
     }
     .subcategories .subcategory {
@@ -77,12 +77,12 @@
     border-left-width: 3px !important;
     .category-name,
     .category-title-link h3 {
-      font-size: 14px;
+      font-size: 0.9375rem;
       font-weight: 600;
       color: var(--sp-text-highlighted);
     }
     .category-description {
-      font-size: 13px;
+      font-size: 0.875rem;
       color: var(--sp-text-muted);
     }
   }
@@ -104,12 +104,12 @@
     padding: 0;
   }
   .category-title {
-    font-size: 24px;
+    font-size: 1.625rem;
     color: var(--sp-text-highlighted) !important;
   }
   .category-title-description {
     color: var(--sp-text-muted) !important;
-    font-size: 13px;
+    font-size: 0.875rem;
   }
 }
 

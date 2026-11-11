@@ -70,6 +70,7 @@
   .title a {
     color: var(--sp-text-highlighted);
     font-weight: 500;
+    font-size: 0.9375rem;
   }
   .time,
   .type {
@@ -78,7 +79,7 @@
   }
   .excerpt {
     color: var(--sp-text-toned);
-    font-size: 13px;
+    font-size: 0.875rem;
   }
 }
 
@@ -182,7 +183,7 @@
   .summary-user-list h3 {
     text-transform: none;
     letter-spacing: 0;
-    font-size: 14px;
+    font-size: 0.9375rem;
     font-weight: 600;
     color: var(--sp-text-highlighted);
   }
@@ -229,7 +230,7 @@
   .user-profile-names {
     .user-profile-names__primary,
     .username {
-      font-size: 24px;
+      font-size: 1.5rem;
       font-weight: 600;
       letter-spacing: -0.015em;
       line-height: 1.2;
@@ -237,7 +238,7 @@
     }
     .user-profile-names__secondary,
     .full-name {
-      font-size: 15px;
+      font-size: 0.9375rem;
       font-weight: 500;
       color: var(--sp-text-toned);
       margin-top: 2px;
@@ -258,7 +259,7 @@
   }
 
   .bio {
-    font-size: 14px;
+    font-size: 0.9375rem;
     color: var(--sp-text);
     margin-top: 12px;
     max-width: 72ch;

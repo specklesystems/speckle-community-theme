@@ -168,7 +168,7 @@
 
     li {
       border-radius: var(--sp-radius-md);
-      font-size: 13px;
+      font-size: 0.875rem;
       color: var(--sp-text);
       a {
         color: var(--sp-text);
@@ -222,7 +222,7 @@
     }
   }
   .results {
-    font-size: 13px;
+    font-size: 0.875rem;
     .search-result-topic .topic-title,
     .search-link .topic-title {
       color: var(--sp-text-highlighted);
