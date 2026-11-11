@@ -275,13 +275,16 @@
     }
   }
 
-  // Actions column: right-aligned, same width buttons
+  // Actions: one right-aligned row of same-width buttons (a stacked column
+  // set the collapsed card's height at three buttons tall)
   section.controls {
     flex: 0 0 auto;
     margin: 0 0 0 auto;
 
     ul {
-      flex-direction: column;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: flex-end;
       gap: 8px;
       margin: 0;
       padding: 0;
@@ -384,4 +387,17 @@
 
 section.user-navigation.user-navigation-primary {
   border-bottom: 0;
+}
+
+// Collapsed header: a compact identity bar (~107px, was ~161px).
+// Expanding restores the 96px avatar and full padding.
+.user-main .about.collapsed-info {
+  .details .primary {
+    padding: 16px 20px;
+    align-items: center;
+  }
+  .user-profile-avatar img.avatar {
+    width: 64px;
+    height: 64px;
+  }
 }

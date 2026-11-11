@@ -20,6 +20,7 @@ Live configuration, theme IDs, deploy steps, rollback and branding images: `READ
 - **Specificity.** Core and plugin CSS often outrank a plain selector. Measure computed styles in the browser before and after each change; when a rule does not apply, find the winning core selector and outrank it by one step, keeping `!important` for genuine last resorts.
 - **Partials** keep the `sp-` prefix (README explains the core `@import` collision).
 - **Desktop geometry** (anything using `--topic-body-width` or `--d-sidebar-width`) lives in `desktop/desktop.scss` beside its `max-width: 767px` guard: phones can be served desktop view (iOS "Request Desktop Website").
+- **Responsive, not view-detected.** Discourse picks desktop or mobile view from the user agent, which lies (iPads, "Request Desktop Website", old home-screen web apps). `scss/sp-responsive.scss` applies in both views: layout keys on `max-width: 767px`, tap size and 16px fields key on `pointer: coarse`. Rules tied to one view's markup (the desktop topic-list restack) go in that view's file under the same queries; keep `mobile/mobile.scss` thin.
 - **Plugins** (reactions, solved, assign) render their own markup inside core areas; check changes on a real post that has likes and a solution.
 - **Verify** every change in light and dark, in desktop view, mobile view, and desktop view at ~390px, across a topic list, a topic, a personal message, a profile and an admin page. Preview unreleased work as a non-default theme with `?preview_theme_id=<id>`.
 - **Deploy** is push to `main`, then Check for updates in the admin (README).
@@ -27,7 +28,7 @@ Live configuration, theme IDs, deploy steps, rollback and branding images: `READ
 
 ## Open work
 
-- **Mobile banner.** The notifications prompt's close × overlaps its text; the search-banner hero takes half the first screen on phones. Compact both in `mobile/mobile.scss`.
+- **Notifications prompt.** Its close × was reported overlapping its text on phones; not reproduced on an account that has already answered it. Check with a fresh account before touching it.
 - **Narrow desktop composer** (commit `badd501`): Reply/Close moved under the "replying to" line at ≤767px. Confirm on a device with the composer open and the keyboard up.
 - **Enterprise customer header** (agreed direction, not built). For categories whose parent is Enterprise (parent slug held in a theme setting), replace the search banner with: a 48px logo tile with wordmarks contained, customer name and description, a "Private · <Customer> and Speckle" badge, category-scoped search, and the category colour as a 3px top strip. When the category colour is the default `0088CC`, white or black, the strip falls back to a neutral hairline. All 33 Enterprise categories have logos (30 square, 3 wide wordmarks).
 - **Category colours** (forum data, not theme): Enterprise categories still on the default `0088CC` need real brand colours.
