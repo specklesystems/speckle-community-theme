@@ -52,7 +52,7 @@ Discourse checks for updates periodically but never applies them on its own, so 
 The favicon and touch icon are the cube with an amber speech-bubble badge, so forum tabs stand apart from the app (plain cube) and the docs (green page badge). To re-render after editing the SVG:
 
 ```sh
-rsvg-convert -w 32 -h 32 branding/favicon.svg | convert - -background none -gravity center -extent 48x48 branding/favicon.png
+rsvg-convert -w 48 -h 48 branding/favicon.svg -o branding/favicon.png
 rsvg-convert -w 108 -h 108 branding/favicon.svg | convert - -background white -gravity center -extent 180x180 -flatten -alpha off branding/apple_touch_icon.png
 ```
 
