@@ -68,6 +68,22 @@ body.speckle-full-bleed.has-sidebar-page .d-header .contents > .home-logo-wrappe
   min-width: 0;
 }
 
+// Docked sidebar has no collapse toggle, as in frontend-3: the sidebar is the
+// navigation, not a panel. Discourse undocks it below 768px (narrow desktop
+// view) and the toggle is then the only way to open it, so it stays there.
+// The initializer reopens a sidebar a reader had collapsed before this change.
+@media (min-width: 768px) {
+  .d-header .contents > .header-sidebar-toggle {
+    display: none;
+  }
+  // Logo cell spans the sidebar, cube on the sidebar's icon column
+  body.speckle-full-bleed.has-sidebar-page .d-header .contents > .home-logo-wrapper-outlet {
+    width: var(--d-sidebar-width);
+    padding-left: 10px;
+    box-sizing: border-box;
+  }
+}
+
 // First-post topic map: sit exactly on the post's text column (core spans the
 // avatar column and indents the contents 56px instead).
 .topic-post .topic-map.--op,
