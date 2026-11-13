@@ -222,13 +222,5 @@ body.speckle-full-bleed.has-sidebar-page .d-header .contents > .home-logo-wrappe
     }
   }
 
-  // Header: app button collapses to the cube, as in mobile view
-  .speckle-app-button-wrapper .speckle-app-button {
-    padding: 0;
-    width: 32px;
-    justify-content: center;
-    span {
-      display: none;
-    }
-  }
+  // Header app button: compact cube rules live in sp-header.scss
 }
