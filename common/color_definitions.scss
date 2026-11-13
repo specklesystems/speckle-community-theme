@@ -28,6 +28,10 @@
   --sp-text-muted: #{dark-light-choose(#71717b, #9f9fa9)};
   --sp-text-dimmed: #{dark-light-choose(#9f9fa9, #71717b)};
   --sp-text-inverted: #{dark-light-choose(#ffffff, #18181b)};
+  // Header text links, as on the docs header (zinc-600 / zinc-400, hover
+  // zinc-900 / zinc-300)
+  --sp-header-link: #{dark-light-choose(#52525c, #9f9fa9)};
+  --sp-header-link-hover: #{dark-light-choose(#18181b, #d4d4d8)};
 
   // Semantic (--ui-primary etc.)
   --sp-primary: #{dark-light-choose(#2b7fff, #51a2ff)};

@@ -168,12 +168,12 @@
   .speckle-header-link {
     font-size: 14px;
     font-weight: 500;
-    color: var(--sp-text-toned);
+    color: var(--sp-header-link);
     white-space: nowrap;
     text-decoration: none;
 
     &:hover {
-      color: var(--sp-text-highlighted);
+      color: var(--sp-header-link-hover);
     }
   }
 }
