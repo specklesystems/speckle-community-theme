@@ -154,25 +154,103 @@
   }
 }
 
-// "Open Speckle" app button (javascripts/…/speckle-app-button)
-.speckle-app-button-wrapper {
+// Header links + "Open Speckle" (javascripts/…/speckle-header-links,
+// speckle-app-button): the docs header's right-hand group, same order and
+// sizes — search, text links, a primary pill with a chevron.
+.speckle-header-links {
   display: flex;
   align-items: center;
-  margin-right: 8px;
+  gap: 24px;
+  margin: 0 8px 0 16px;
   list-style: none;
 
-  .speckle-app-button {
-    gap: 6px;
-    min-height: 32px;
-    font-size: 13px;
+  .speckle-header-link {
+    font-size: 14px;
     font-weight: 500;
+    color: var(--sp-text-toned);
     white-space: nowrap;
     text-decoration: none;
 
-    svg {
-      width: 14px;
-      height: 14px;
-      flex-shrink: 0;
+    &:hover {
+      color: var(--sp-text-highlighted);
     }
   }
+}
+
+.speckle-app-button-wrapper {
+  display: flex;
+  align-items: center;
+  margin: 0 8px;
+  list-style: none;
+}
+
+.d-header .speckle-app-button.btn-primary {
+  height: 32px;
+  min-height: 32px;
+  padding: 0 8px 0 12px;
+  gap: 4px;
+  border: 0;
+  border-radius: 12px;
+  background: var(--sp-primary);
+  color: var(--sp-text-inverted);
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+  text-decoration: none;
+
+  &:hover {
+    background: var(--sp-primary-hover);
+    color: var(--sp-text-inverted);
+  }
+
+  .speckle-app-button__cube {
+    display: none;
+  }
+  .speckle-app-button__chevron {
+    width: 12px;
+    height: 12px;
+    flex-shrink: 0;
+    opacity: 0.9;
+  }
+}
+
+// Text links need room the header doesn't have below 1024px (and the forum
+// sidebar already links the docs)
+@media (max-width: 1023px) {
+  .speckle-header-links {
+    display: none;
+  }
+}
+.mobile-view .speckle-header-links {
+  display: none;
+}
+
+// Phones, in either Discourse view: the button shrinks to the outlined cube
+@mixin sp-app-button-compact {
+  .d-header .speckle-app-button.btn-primary {
+    width: 32px;
+    padding: 0;
+    justify-content: center;
+    background: transparent;
+    box-shadow: inset 0 0 0 1px var(--sp-border-accented);
+
+    &:hover {
+      background: var(--sp-bg-elevated);
+    }
+    .speckle-app-button__label,
+    .speckle-app-button__chevron {
+      display: none;
+    }
+    .speckle-app-button__cube {
+      display: block;
+      width: 14px;
+      height: 14px;
+    }
+  }
+}
+@media (max-width: 767px) {
+  @include sp-app-button-compact;
+}
+.mobile-view {
+  @include sp-app-button-compact;
 }

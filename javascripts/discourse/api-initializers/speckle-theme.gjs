@@ -1,5 +1,6 @@
 import { apiInitializer } from "discourse/lib/api";
 import SpeckleAppButton from "../components/speckle-app-button";
+import SpeckleHeaderLinks from "../components/speckle-header-links";
 
 export default apiInitializer((api) => {
   if (settings.full_bleed_layout) {
@@ -27,7 +28,13 @@ export default apiInitializer((api) => {
     application.toggleSidebar();
   }
 
+  // Same order as the docs header: search, text links, primary button
+  if (settings.show_header_links) {
+    api.headerIcons.add("speckle-links", SpeckleHeaderLinks, { after: "search" });
+  }
   if (settings.show_app_button && settings.app_url) {
-    api.headerIcons.add("speckle-app", SpeckleAppButton, { before: "search" });
+    api.headerIcons.add("speckle-app", SpeckleAppButton, {
+      after: settings.show_header_links ? "speckle-links" : "search",
+    });
   }
 });

@@ -8,17 +8,9 @@
   padding: 12px 12px 32px;
 }
 
-// App button collapses to the cube only
+// App button collapses to the cube (sp-header.scss)
 .speckle-app-button-wrapper {
-  margin-right: 4px;
-  .speckle-app-button {
-    padding: 0;
-    width: 32px;
-    justify-content: center;
-    span {
-      display: none;
-    }
-  }
+  margin: 0 4px;
 }
 
 // Tabs scroll horizontally rather than wrap

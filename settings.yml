@@ -7,6 +7,21 @@ app_button_label:
 app_url:
   default: "https://app.speckle.systems"
   description: Where the header app button points.
+show_header_links:
+  default: true
+  description: Show text links (website, documentation) in the header, as on the docs site.
+website_label:
+  default: "Website"
+  description: Label for the website link.
+website_url:
+  default: "https://speckle.systems"
+  description: Where the website link points.
+docs_label:
+  default: "Documentation"
+  description: Label for the documentation link.
+docs_url:
+  default: "https://docs.speckle.systems"
+  description: Where the documentation link points.
 full_bleed_layout:
   default: true
   description: Dashboard layout like frontend-3 (sidebar flush to the left edge, header spans the full width). Turn off to keep Discourse's centred layout.
