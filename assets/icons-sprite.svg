@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+  <!-- Outline search glyph (1.5px stroke) to match the docs header and the
+       app's line icons; replaces Font Awesome's solid magnifying-glass. -->
+  <symbol id="sp-search" viewBox="0 0 16 16">
+    <circle cx="7" cy="7" r="4.75" fill="none" stroke="currentColor" stroke-width="1.5" />
+    <path d="M10.5 10.5L14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+  </symbol>
+</svg>

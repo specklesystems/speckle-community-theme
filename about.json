@@ -35,5 +35,8 @@
       "success": "05df72",
       "love": "ff6467"
     }
+  },
+  "assets": {
+    "icons-sprite": "assets/icons-sprite.svg"
   }
 }
