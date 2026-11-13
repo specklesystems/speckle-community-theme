@@ -45,6 +45,8 @@ Discourse checks for updates periodically but never applies them on its own, so 
 
 | Setting | New | Previous (rollback) |
 | --- | --- | --- |
+| `logo` | `branding/logo.png` (rendered from `branding/logo.svg`) | `/uploads/default/original/2X/e/ecadcd82c858b5eb7db6c57f09c0482ca9fa69ab.png` |
+| `logo_dark` | `branding/logo_dark.png` (rendered from `branding/logo_dark.svg`) | `/uploads/default/original/2X/3/395a3578bc2ea9c08035a6f51fcb2adf62af8e73.png` |
 | `logo_small` | `branding/logo_small.png` | `/uploads/default/original/2X/9/90e3846c51fda196732719e194c78ab6da41ad80.png` |
 | `favicon` | `branding/favicon.png` (rendered from `branding/favicon.svg`) | `/uploads/default/original/2X/6/6c171f79cd9c3a081a985fbf56a151a1e83ab7cd.png` |
 | `apple_touch_icon` | `branding/apple_touch_icon.png` (rendered from `branding/favicon.svg`) | `/uploads/default/original/2X/6/6c171f79cd9c3a081a985fbf56a151a1e83ab7cd.png` |
@@ -54,6 +56,13 @@ The favicon and touch icon are the cube with an amber speech-bubble badge, so fo
 ```sh
 rsvg-convert -w 48 -h 48 branding/favicon.svg -o branding/favicon.png
 rsvg-convert -w 108 -h 108 branding/favicon.svg | convert - -background white -gravity center -extent 180x180 -flatten -alpha off branding/apple_touch_icon.png
+```
+
+The logo is the same lockup as the docs (`speckle-docs-NEW/logo/`): cube, "Speckle" in the docs outline, then the section name in Inter Medium at the docs' size, `#7C7C7D` on light and `#C4C4C4` on dark. The header logos carry no badge; the word names the site. To re-render:
+
+```sh
+rsvg-convert -h 80 branding/logo.svg -o branding/logo.png
+rsvg-convert -h 80 branding/logo_dark.svg -o branding/logo_dark.png
 ```
 
 The theme also keeps the full logo in the desktop header when scrolled (`home-logo-minimized` transformer), so `logo_small` mostly matters on mobile.
