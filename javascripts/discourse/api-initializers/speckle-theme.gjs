@@ -28,6 +28,9 @@ export default apiInitializer((api) => {
     application.toggleSidebar();
   }
 
+  // Thin outline magnifier (assets/icons-sprite.svg), as in the docs header
+  api.replaceIcon("magnifying-glass", "sp-search");
+
   // Same order as the docs header: search, text links, primary button
   if (settings.show_header_links) {
     api.headerIcons.add("speckle-links", SpeckleHeaderLinks, {
