@@ -46,7 +46,14 @@ Discourse checks for updates periodically but never applies them on its own, so 
 | Setting | New | Previous (rollback) |
 | --- | --- | --- |
 | `logo_small` | `branding/logo_small.png` | `/uploads/default/original/2X/9/90e3846c51fda196732719e194c78ab6da41ad80.png` |
-| `favicon` | `branding/favicon.png` (from frontend-3 `public/favicon.ico`) | `/uploads/default/original/2X/6/6c171f79cd9c3a081a985fbf56a151a1e83ab7cd.png` |
-| `apple_touch_icon` | `branding/apple_touch_icon.png` | `/uploads/default/original/2X/6/6c171f79cd9c3a081a985fbf56a151a1e83ab7cd.png` |
+| `favicon` | `branding/favicon.png` (rendered from `branding/favicon.svg`) | `/uploads/default/original/2X/6/6c171f79cd9c3a081a985fbf56a151a1e83ab7cd.png` |
+| `apple_touch_icon` | `branding/apple_touch_icon.png` (rendered from `branding/favicon.svg`) | `/uploads/default/original/2X/6/6c171f79cd9c3a081a985fbf56a151a1e83ab7cd.png` |
+
+The favicon and touch icon are the cube with an amber speech-bubble badge, so forum tabs stand apart from the app (plain cube) and the docs (green page badge). To re-render after editing the SVG:
+
+```sh
+rsvg-convert -w 32 -h 32 branding/favicon.svg | convert - -background none -gravity center -extent 48x48 branding/favicon.png
+rsvg-convert -w 108 -h 108 branding/favicon.svg | convert - -background white -gravity center -extent 180x180 -flatten -alpha off branding/apple_touch_icon.png
+```
 
 The theme also keeps the full logo in the desktop header when scrolled (`home-logo-minimized` transformer), so `logo_small` mostly matters on mobile.

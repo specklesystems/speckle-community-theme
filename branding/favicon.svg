@@ -1,0 +1,19 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<!-- Speckle mark with a forum badge (speech bubble), knocked out of the mark -->
+<mask id="knockout" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
+<rect width="24" height="24" fill="white"/>
+<g fill="black" stroke="black" stroke-width="3" stroke-linejoin="round">
+<rect x="10.5" y="10" width="13.5" height="10.5" rx="3"/>
+<path d="M13.5 19.5L13 24L18.5 19.5Z"/>
+</g>
+</mask>
+<g mask="url(#knockout)">
+<path d="M20.2899 0L0.424805 1.09847V21.0501L3.70621 24L23.5713 22.9016V2.94987L20.2899 0Z" fill="#136CFF"/>
+<path d="M20.2899 0L0.424805 1.09847L3.70621 4.04835L23.5713 2.94987L20.2899 0Z" fill="#60A5FA"/>
+<path d="M3.70621 4.04835L0.424805 1.09847V21.0501L3.70621 24V4.04835Z" fill="#0057E5"/>
+</g>
+<g fill="#F59E0B">
+<rect x="10.5" y="10" width="13.5" height="10.5" rx="3"/>
+<path d="M13.5 19.5L13 24L18.5 19.5Z"/>
+</g>
+</svg>
