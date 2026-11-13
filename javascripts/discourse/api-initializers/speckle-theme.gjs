@@ -30,11 +30,15 @@ export default apiInitializer((api) => {
 
   // Same order as the docs header: search, text links, primary button
   if (settings.show_header_links) {
-    api.headerIcons.add("speckle-links", SpeckleHeaderLinks, { after: "search" });
+    api.headerIcons.add("speckle-links", SpeckleHeaderLinks, {
+      after: "search",
+      before: "user-menu",
+    });
   }
   if (settings.show_app_button && settings.app_url) {
     api.headerIcons.add("speckle-app", SpeckleAppButton, {
       after: settings.show_header_links ? "speckle-links" : "search",
+      before: "user-menu",
     });
   }
 });
