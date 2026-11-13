@@ -14,6 +14,19 @@ export default apiInitializer((api) => {
     api.container.lookup("service:site")?.desktopView ? false : value
   );
 
+  // The docked sidebar has no toggle (desktop.scss), so a reader who
+  // collapsed it before would be stuck without it. Reopen it on wide screens.
+  const site = api.container.lookup("service:site");
+  const application = api.container.lookup("controller:application");
+  if (
+    site?.desktopView &&
+    !site.narrowDesktopView &&
+    application?.sidebarEnabled &&
+    !application.showSidebar
+  ) {
+    application.toggleSidebar();
+  }
+
   if (settings.show_app_button && settings.app_url) {
     api.headerIcons.add("speckle-app", SpeckleAppButton, { before: "search" });
   }
