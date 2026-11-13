@@ -4,11 +4,10 @@
 // ---------------------------------------------------------------------------
 
 :root {
-  // Wider than frontend-3's 248px on purpose: the header logo is the docs
-  // lockup at the docs' 28px height (200px wide), which starts at 56px after
-  // the toggle. 272px gives it 16px clear of the seam, matching the 16px
-  // header inset on the left.
-  --d-sidebar-width: 272px;
+  // Same as the docs sidebar (Mintlify's 18rem), so the seam, logo cell and
+  // content start line up when moving between the two sites. Wider than
+  // frontend-3's 248px: the header logo is the docs lockup at 28px (200px).
+  --d-sidebar-width: 288px;
   --d-sidebar-row-height: 32px;
   --d-sidebar-row-horizontal-padding: 10px;
   --d-sidebar-section-link-icon-size: 14px;
